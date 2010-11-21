@@ -1,0 +1,6 @@
+autoload:
+  # autoloading of perso fw for local use
+  myClasses:
+    name:      myClasses
+    path:      C:\EasyPHP_3_0\php\perso_php
+    recursive: on

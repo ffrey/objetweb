@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1252"><title>Fiche doc</title>
+
+<meta name="GENERATOR" content="OpenOffice.org 3.0 (Win32)">
+<meta name="AUTHOR" content="fanta orange">
+<meta name="CREATED" content="20090106;19061900">
+<meta name="CHANGEDBY" content="fanta orange">
+<meta name="CHANGED" content="20090218;10060000">
+<meta name="Info 1" content="">
+<meta name="Info 2" content="">
+<meta name="Info 3" content="">
+<meta name="Info 4" content="">
+<meta name="SDENDNOTE" content="ARABIC">
+<style type="text/css">
+<!--
+@page { margin: 2.54cm }
+P { margin-bottom: 0.21cm; page-break-before: auto }
+P.western { font-family: "Arial", sans-serif; font-size: 12pt }
+P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+P.ctl { font-family: "Times New Roman", serif; font-size: 12pt }
+H1 { margin-top: 0cm; margin-bottom: 0.11cm; font-family: "Arial", sans-serif; font-size: 17pt; text-align: center; page-break-before: auto; page-break-after: auto }
+H2 { margin-top: 0.78cm; margin-bottom: 0.11cm; font-family: "Arial", sans-serif; font-size: 14pt; page-break-before: auto; page-break-after: auto }
+A:link { so-language: zxx }
+-->
+</style>
+</head>
+<body style="border: medium none ; padding: 0cm; direction: ltr;" lang="fr-FR">
+<h1><font style="font-size: 17pt;" size="5"><b>Conventions
+sf</b></font></h1>
+<h2>Constantes (app.yml, ...) </h2>
+<p style="margin-left: 1.27cm; margin-bottom: 0cm; font-weight: normal;">
+<font face="Times New Roman, serif"><font style="font-size: 11pt;" size="2">paths
+:</font></font></p>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td>absolute paths*</td>
+<td>&lt;nom_var&gt;_dir</td>
+<td>&lt;abs_sys_path&gt;/&lt;dir&gt;...</td>
+</tr>
+<tr>
+<td>relative paths</td>
+<td>&lt;nom_var&gt;_reldir</td>
+<td>&lt;dir&gt;/&lt;dir&gt; from either
+public dir OR root dir</td>
+</tr>
+</tbody>
+</table>
+<p style="margin-left: 1.27cm; margin-bottom: 0cm; font-weight: normal;">*
+: official sf convention</p>
+<p style="margin-left: 1.27cm; margin-bottom: 0cm; font-weight: normal;"></p>
+<h2>CSS</h2>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td>naming</td>
+<td>underscore lowercase [from sf auto-generated html]</td>
+<td>&lt;any&gt;_&lt;any&gt;...</td>
+</tr>
+</tbody>
+</table>
+<p style="margin-left: 1.27cm; margin-bottom: 0cm; font-weight: normal;"></p>
+<h2>Model</h2>
+<h3>ORM classes</h3>
+<table>
+<tr>
+<td>_getCritFor<purpose></td>
+<td>methods that return a Criteria obj</td>
+<td></td>
+</tr>
+</table>
+<h3>Database</h3>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td>table name</td>
+<td>underscore lowercase<span style="font-weight: bold;">
+singular</span></td>
+<td><br>
+</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td></td>
+<td>tinyint(4) NOT NULL DEFAULT '1'/''0'</td>
+</tr>
+<tr>
+<td>special propel field</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>created_at, updated_at</td>
+<td>datetime DEFAULT NULL</td>
+</tr>
+</tbody>
+</table>
+</body></html>

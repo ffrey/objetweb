@@ -1,0 +1,10 @@
+# 2009 04 25
+* ??? owSfHelper.php is loaded ok from a sf app if placed in perso_php/helper/
+
+      BUT cannot be loaded if placed in here (perso_php/perso_sf/helper)
+
+<= with : 
+* new dir added to include_path !
+
+<= tried :
+* added mySfClasses in config/autoload.yml

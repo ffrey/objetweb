@@ -1,0 +1,3 @@
+# 21 01 09
+@see : site_enchères > lib > forms > BackendUtilisateurForm.class.php
+? owForms::hide() & ::display() => could be implemented via sfEvent ('method not found')... : cleaner ?
