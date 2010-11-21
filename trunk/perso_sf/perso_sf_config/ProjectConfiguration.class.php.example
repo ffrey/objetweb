@@ -1,0 +1,24 @@
+<?php
+$isLocal = (strstr(realpath('.'), 'EasyPHP') )? TRUE : FALSE;
+if ($isLocal ) { // LOCAL :
+	define('CHECK_MODEL', true);
+	$pathToLibDir = 'C:\EasyPHP_3_0\php_sf12';
+	// add helpers & classes that will be under plugin 'myClassesPlugin' online
+	set_include_path ( get_include_path () . PATH_SEPARATOR . 'C:\EasyPHP_3_0\php\perso_php' ); 
+} else { // ONLINE :
+	define('CHECK_MODEL', false);
+	$pathToLibDir = realpath('.') . '/../../sf12';
+}
+require_once $pathToLibDir . '/lib/autoload/sfCoreAutoload.class.php';
+sfCoreAutoload::register ();
+
+
+class ProjectConfiguration extends sfProjectConfiguration {
+	public function setup() {
+		$this->enableAllPluginsExcept ( array ('sfDoctrinePlugin', 'sfCompat10Plugin' ) );
+		
+		
+		// ONLINE /OVH :
+		$this->setWebDir ( $this->getRootDir () . DIRECTORY_SEPARATOR . 'www' );
+	}
+}
