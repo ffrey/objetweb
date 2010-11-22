@@ -58,6 +58,27 @@ class myUtil {
 			throw new Exception ( __CLASS__ . '::' . $msg_error );
 		}
 	}
+	/*
+	 * checks all vars specified in $A_filled are properly filled in $A_data
+	 * @todo add type checking for int/string/bool (array & Class already built-in)
+	 *
+	 */
+	public static function _getNeededFilled(array $A_filled, array $A_data) {
+		$missingKey = array ();
+		$emptyKey = array ();
+		$msg_error = '';
+		foreach ( $A_filled as $key ) {
+			if (! key_exists ( $key, $A_data )) {
+				$missingKey [] = $key;
+				continue;
+			}
+			if (empty ( $A_data [$key] )) {
+				$emptyKey [] = $key;
+			}
+		}
+		return array($missingKey, $emptyKey);
+	}
+	
 	/**
 	 * idem : except vars can be empty
 	 *
@@ -96,7 +117,7 @@ class myUtil {
     {
         $msg = __CLASS__ . '::' . __FUNCTION__ . ': ';
 		if (! in_array ( $val, $acceptedVals )) {
-			throw new Exception ( $msg . $val . ' is not in accepted values : ' . implode ( ', ', $acceptedVals ) );
+			throw new Exception ( $msg . '-' . $val . '- is not in accepted values : ' . implode ( ', ', $acceptedVals ) );
 		}
     }
     /**
