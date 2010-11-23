@@ -35,6 +35,7 @@ class owArrayIterator implements ArrayAccess, Iterator {
 	}
 
 	/*** Iterator ***/
+	// @source : http://php.net/manual/en/language.oop5.iterations.php
 	/**
 	 * @param offset
 	 */
