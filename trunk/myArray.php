@@ -52,4 +52,17 @@ class myArray
 		}
 		return $A_ret;
 	}
+	
+	/**
+	* unsets all $keys existing in $A
+	* @return array $A
+	*/
+	public static function multiUnset(array $A, array $keys) {
+		foreach ($keys AS $k) {
+			if (array_key_exists($k, $A) ) {
+				unset($A[$k]);
+			}
+		}
+		return $A;
+	}
 }
