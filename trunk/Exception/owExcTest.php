@@ -29,11 +29,31 @@ class owExcTest extends PHPUnit_Framework_TestCase
     
     public function testGetPublicMsg()
     {
+		$newDefault = 'oups !-(';
+		owExc::set('defaultPublicMsg', $newDefault);
     	$easyMsg = 'easy man !';
     	try {
     		throw new owExc('too complicated for average user ## ' . $easyMsg);
     	} catch (owExc $e) {
-    		$this->assertEquals($easyMsg, $e->getPublicMsg() );
+    		$this->assertEquals($easyMsg, $e->getPublicMsg(), 'with sep, the initial msg is thrown');
+    	}
+		$sepEasyMsg = '## '.$easyMsg;
+		    	try {
+    		throw new owExc($sepEasyMsg);
+    	} catch (owExc $e) {
+    		$this->assertEquals($easyMsg, $e->getPublicMsg(), 'with prepended sep, the initial msg is thrown');
+    	}
+    }
+	
+	public function testGetPublicMsgWithoutSep()
+    {
+		$newDefault = 'oups !-(';
+		owExc::set('defaultPublicMsg', $newDefault);
+    	$easyMsg = 'easy man !';
+    	try {
+    		throw new owExc($easyMsg);
+    	} catch (owExc $e) {
+    		$this->assertEquals(		$newDefault, $e->getPublicMsg(), 'without sep, default msg is thrown');
     	}
     }
     
