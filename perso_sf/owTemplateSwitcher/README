@@ -1,0 +1,32 @@
+# owTemplateSwitcher plugin (for symfony 1.2) #
+
+This plugin supplies a front-controller <app>_design.php. Accessing the app through 
+this controller, 2 sets of templates are allowed to co-exist. 
+
+Every needed template will be looked for in this order :
+    - inside the <public_directory>/_design_templates/ dir,
+    - inside the classical symfony structure.
+
+Basically, this allows the existence of second set of template for any given application. The aim is
+The main aim is to ease co-working between designer and developer.
+
+## Installation ##
+
+  * Install the plugin
+
+        symfony plugin:install owTemplateSwitcherPlugin
+    
+## Use ##
+
+  * launch the task 'owTemplatesSwitcher::build-front <app>'
+    This will create under your public directory :
+        - a new controller '<app>_design.php',
+        - a directory '_design_templates', containing the mirror of your
+        <app> directory structure for templates only.
+        
+  * whenever you, or your designer, wants to override a template, all he 
+  needs to do is create a file with the same name in the corresponding directory 
+  of the '_design_templates' directory.
+  
+  * use <app>_design.php to view you app with the design template. Use 
+  <app>_dev.php to view the 'classical' template.

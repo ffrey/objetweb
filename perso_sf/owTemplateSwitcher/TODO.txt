@@ -1,0 +1,22 @@
+# owTemplateSwitcher plugin (for symfony 1.2) #
+
+## version 0.1.0 ##
+
+
+## todo ##
+* test... !
+
+* allow distinct access to designer :
+    * access to design dirs from online ???
+    <= tweak the htaccess... + ie ???
+    
+    * distinct ftp access ?
+    
+* write task to add new templates to design ! (ex. : :get-new-templates)
+    => all new copied files would be called "<initial_name>_TODO.php" !
+        <= allows easy consulting of "what to do" for designer...
+
+* think of a light interface to offer easy viewing of design templates, & classical ones.
+  => more advanced features should be done through trac-style system : messaging, etc.
+  
+* ...
