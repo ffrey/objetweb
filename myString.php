@@ -263,5 +263,23 @@ class myString
 		return $code;
 	}
   
+  /**
+   * @param string $s : string of pairs (key/value) delimited by $sep
+   * $pairs are separated by '='
+   * if '=' is found multiple times within 2 $sep => only first one is considered a separator / others are considered part of value
+   */
+  public static function keyValueDecode($s, $sep = ';')
+  {
+    $ret = array();
+	$t = explode($sep, $s);
+	foreach ($t AS $chaine) {
+		$firstEqual = strpos($chaine, '=');
+		if (!$firstEqual) { continue; } // 0 ou false
+		$key = substr($chaine, 0, $firstEqual);
+		$val = substr($chaine, $firstEqual+1);
+		$ret[$key] = $val;
+	}
+	return $ret;
+  }
   
 }

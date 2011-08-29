@@ -6,7 +6,7 @@ require_once 'myString.php';
 
 class owStringTest extends PHPUnit_Framework_TestCase
 {
-  public function testConcertir()
+  public function testConvertir()
   {
   	$tests = array(
   	array('34.87', 'trente quatre euros et quatre-vingt sept centimes'),
@@ -23,5 +23,16 @@ class owStringTest extends PHPUnit_Framework_TestCase
   	}
   }
   
-  
+  public function testKeyValueDecode()
+  {
+	$tests = array(
+		array('hello;nom=hello;extreme=test=hello;', array('nom' => 'hello', 'extreme' => 'test=hello') ),
+		array('sep;;tricky=;easy=no;kj',             array('tricky' => '', 'easy' => 'no') ),
+		array('=nokey!;hello=bonjour',              array('hello' => 'bonjour') ),
+	);
+	foreach ($tests AS $t) {
+		$got = myString::keyValueDecode($t[0]);
+		$this->assertEquals($t[1], $got);
+	}
+  }
 }
