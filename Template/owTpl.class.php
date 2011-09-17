@@ -49,10 +49,9 @@ class owTpl
 				printf('val : %s => %s doit remplacer %s', $varname, $v, '[[!'.$varname.'!]]'."\n");
 			}
 			// $ret = str_replace('[[!'.$varname.'!]]', $v, $ret, $count);
-            $ret = preg_replace('#\[([^[]*)\[!'.$varname.'!]([^]]*)\]#', '$1'.$v.'$2', $ret);
+            $ret = preg_replace('#\[([^[]*)\[!'.$varname.'!]([^]]*)\]#', '${1}'.$v.'${2}', $ret);
 			if ($db) {
-				// 
-				var_dump($ret."\n");
+				// 				var_dump($ret."\n");
 			}
             /*
 			if (0 == $count) {
