@@ -38,27 +38,30 @@ class owTpl
 	 */
 	static public function parse($str, array $data)
 	{
-		$db = true;
+		$db = false;
 		$ret = '';
 		$origin = $msg = __CLASS__.'::'.__FUNCTION__;
 		$ret = $str;
 		$unknown_vars = array();
 		foreach ($data AS $varname => $v) {
+            if ('' == $v) { continue; }
 			if ($db) {
 				printf('val : %s => %s doit remplacer %s', $varname, $v, '[[!'.$varname.'!]]'."\n");
 			}
-			$ret = str_replace('[[!'.$varname.'!]]', $v, $ret, $count);
+			// $ret = str_replace('[[!'.$varname.'!]]', $v, $ret, $count);
+            $ret = preg_replace('#\[([^[]*)\[!'.$varname.'!]([^]]*)\]#', '$1'.$v.'$2', $ret);
 			if ($db) {
 				// 
 				var_dump($ret."\n");
 			}
+            /*
 			if (0 == $count) {
 				$unknown_vars[] = $varname;
 				// throw new Exception ($msg.' : unknown tpl var : ' . $varname);
 			}
-		}
+*/		}
 		// on enleve tous les place-holders vides
-		$ret = preg_replace('#\[\[![^[]*\]#', '', $ret, -1, $missing);
+		$ret = preg_replace('#\[[^[]*\[![^[]*[^[]*\]#', '', $ret, -1, $missing);
 		$msg = '';
 		/**
 		if ($missing) {
