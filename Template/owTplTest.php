@@ -5,7 +5,6 @@
  * 
  *
  */
-
 require_once dirname(__FILE__).'/../helper/owConsoleHelper.php';
 require_once 'owTpl.class.php';
 class owTplTest extends PHPUnit_Framework_TestCase
@@ -30,7 +29,6 @@ class owTplTest extends PHPUnit_Framework_TestCase
             $this->assertEquals($expect, $got);
         }
     }
-
 
 	public function testParse()
 	{
@@ -99,18 +97,18 @@ Chère Madame Michaud,
 Votre commentaire est  .';
         $got = owTpl::parse($text, $data);
         $this->assertEquals($expected, $got);
-        
    }
    /**/
    
    public function testFromFile()
    {
         $db = false;
+        
         $data = array(
             'CIV2' => 'Monsieur',
             'V2'   => '3ème étage',
             // 'V3'   => 'Bât. Les Lilas',
-            
+            'V44' => 'variable qui n\'existe pas dans le template !',
             'V4'   => 'rue de la liberté',
             'V5'   => '',
             'VILLE' => 'Orléans',
@@ -119,6 +117,9 @@ Votre commentaire est  .';
             'TELEPHONE MOBILE' => '06 12 78 34 43',
             'MESSAGE' => 'Pour la Somalie',//
         );
+        // V3,  ZIP, EMAIL : absents | V5, TELEPHONE : vides
+        $expected_unfilled_vars = 5;
+        $expected_missing_vars  = 3;
         $dir = dirname(__FILE__);
         $file          = $dir.'/data/template.txt';
         $file_expected = $dir.'/data/template_expected.txt';
@@ -134,8 +135,20 @@ Votre commentaire est  .';
             step('****');
         }
         $this->assertEquals($expected, $got);
-         
-        // $this->markTestSkipped('tester a partir d\'un fichier');
+        
+        $got = owTpl::getUnknownVars();
+        $expected = array('V44');
+        $this->assertEquals($expected, $got, 
+        'getUnknownVars() indique les variables passees au tpl et
+        qui n\'existaient pas !');
+        
+        $got = owTpl::getMissingVars();
+        $this->assertEquals($expected_missing_vars, $got,
+        'getMissingVars() indique les variables du tpl qui n\'etaient
+         pas dans les donnees fournies !');
+        
+        $got = owTpl::getUnfilledVars();
+        $this->assertEquals($expected_unfilled_vars, $got);
    }
 /**/
-   }
+}

@@ -29,6 +29,32 @@ Service Webmaster.
 ";
 class owTpl
 {
+    protected static 
+      $last_unknown_vars = array(),
+      $last_unfilled_vars = 0,
+      $last_missing_vars  = 0;
+    
+    static public function getUnknownVars()
+    {
+        $ret = self::$last_unknown_vars;
+        self::$last_unknown_vars = array();
+        return $ret;
+    }
+    
+    static public function getUnfilledVars()
+    {
+        $ret = self::$last_unfilled_vars;
+        self::$last_unfilled_vars = 0;
+        return $ret;
+    }
+    
+    static public function getMissingVars()
+    {
+        $ret = self::$last_missing_vars;
+        self::$last_missing_vars = 0;
+        return $ret;
+    }
+    
 		/**
 	 * @todo : cette methode devraient renvoyer une Exception
 	 *  si une variable du template n'est pas remplie (et non
@@ -38,47 +64,32 @@ class owTpl
 	 */
 	static public function parse($str, array $data)
 	{
-		$db = false;
-		$ret = '';
-		$origin = $msg = __CLASS__.'::'.__FUNCTION__;
+		$db = false; $origin = __CLASS__.'::'.__FUNCTION__;
+
 		$ret = $str;
 		$unknown_vars = array();
+        $iEmpty       = 0;
+        $missing      = 0;
 		foreach ($data AS $varname => $v) {
-            if ('' == $v) { continue; }
+            if ('' == $v) { $iEmpty++; continue; }
 			if ($db) {
 				printf('val : %s => %s doit remplacer %s', $varname, $v, '[[!'.$varname.'!]]'."\n");
 			}
-			// $ret = str_replace('[[!'.$varname.'!]]', $v, $ret, $count);
-            $ret = preg_replace('#\[([^[]*)\[!'.$varname.'!]([^]]*)\]#', '${1}'.$v.'${2}', $ret);
+            $found = 0;
+            $ret = preg_replace('#\[([^[]*)\[!'.$varname.'!]([^]]*)\]#', '${1}'.$v.'${2}', $ret, -1, $found);
 			if ($db) {
-				// 				var_dump($ret."\n");
+				var_dump($ret."\n");
 			}
-            /*
-			if (0 == $count) {
+			if (0 == $found) {
 				$unknown_vars[] = $varname;
-				// throw new Exception ($msg.' : unknown tpl var : ' . $varname);
 			}
-*/		}
+/**/		}
 		// on enleve tous les place-holders vides
 		$ret = preg_replace('#\[[^[]*\[![^[]*[^[]*\]#', '', $ret, -1, $missing);
-		$msg = '';
-		/**
-		if ($missing) {
-			$msg .= sprintf('Tpl mail %s has %s unfilled vars', $str, $missing);
-		}
-		if (count($unknown_vars) ) {
-			$msg .= sprintf('Tpl mail %s got unused vars : %s.', $str, implode(', ', $unknown_vars) );
-		}
-		if (!empty($msg) ) {
-			if ($this->isDevEnvt() ) {
-				$this->sendAnomaly($msg);
-			}
-		}
-		if ($db) {
-			var_dump($origin, $ret);
-			exit;
-		}
-		*/
+        self::$last_unknown_vars  = $unknown_vars;
+        self::$last_unfilled_vars = $missing;
+        self::$last_missing_vars  = $missing - $iEmpty;
+
 		return $ret;
 	}
 }
