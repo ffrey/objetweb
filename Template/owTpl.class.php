@@ -1,32 +1,8 @@
 <?php
 // phpunit C:\wamp\lib\ow\Template\owTplTest.php
 /**
- * 
- *
+ * @author Ffrey
  */
- $string = "Service donateurs de Médecin Sans Frontières, 
-
-Suite à une visite sur l'espace donateurs, une demande d'identifiant et de mot de passe a été faite.
-Les coordonnées que le demandeur nous a communiquées sont les suivantes: 
-
-Demandeur : [[!CIV2!]]
-Bâtiment, appartement, escalier, étage : [[!V2!]]
-Résidence, lotissement : [[!V3!]]
-Voie (avenue, rue, allée etc...) : [[!V4!]]
-Boîte postale, lieu dit : [[!V5!]]
-[Code Postal : [!ZIP!]]]
-Ville : [[!VILLE!]]
-Code Pays : [[!PAYS!]]
-
-Tél. fixe : [[!TELEPHONE!]]
-Tél. mobile : [[!TELEPHONE MOBILE!]]
-Email : [[!EMAIL!]]
-
-Message : [[!MESSAGE!]]
-
-Cordialement,
-Service Webmaster.
-";
 class owTpl
 {
     protected static 
@@ -91,5 +67,5 @@ class owTpl
         self::$last_missing_vars  = $missing - $iEmpty;
 
 		return $ret;
-	}
+	} // /parse()
 }
