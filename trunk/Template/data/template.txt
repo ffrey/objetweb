@@ -14,9 +14,9 @@ Demandeur : [[!CIV2!]]
 
 [Tél. fixe : [!TELEPHONE!]
 ][Tél. mobile : [!TELEPHONE MOBILE!]
-][Email : [!EMAIL!]]
-[
-Message : [!MESSAGE!]]
+][Email : [!EMAIL!]
+]
+[Message : [!MESSAGE!]]
 
 Cordialement,
 Service Webmaster.
