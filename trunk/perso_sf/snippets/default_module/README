@@ -1,0 +1,13 @@
+# page erreur 503
+placer sous web_dir/errors/
+## sfApplicationConfiguration.class.php / ligne 227
+sfConfig::get('sf_web_dir').'/errors/unavailable.php',
+
+# erreur 500
+## sfException.class.php / ligne 258
+sfConfig::get('sf_config_dir').'/error',
+
+=> placer dans /config : 
+unavailable.php
+/error/error.<format>.php
+       exception.<format>.php
