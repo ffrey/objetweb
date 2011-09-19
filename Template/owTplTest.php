@@ -149,6 +149,20 @@ Votre commentaire est  .';
         
         $got = owTpl::getUnfilledVars();
         $this->assertEquals($expected_unfilled_vars, $got);
+   } // /testFromFile()
+   
+   public function testCaracteresSpeciaux()
+   {
+		/* *** comment echapper le caractere special "[" dans le texte optionnel ??? ***
+		$test     = 'Message : [ceci est un ultimatum \[echeance fin janvier] pour mofif [!MOTIF!]. Veuillez en tenir compte \[avt fin janvier]]. Vivement les vacances !';
+		$data     = array('MOTIF' => 'Too much noise !-O');
+		$expected = 'Message : ceci est un ultimatum [echeance fin janvier] pour mofif '. $data['MOTIF'] .'. Veuillez en tenir compte [avt fin janvier]. Vivement les vacances !';
+		$got      = owTpl::parse($test, $data);
+		$this->assertEquals($expected, $got);
+		*/
+		// 
+		$this->markTestSkipped('Comment accepter les [ dans le texte optionnel ?');
    }
+   
 /**/
 }
