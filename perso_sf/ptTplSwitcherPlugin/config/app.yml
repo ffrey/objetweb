@@ -1,0 +1,2 @@
+all:
+  ptTplSwitcher: { tplDir: web/ptSwitcherTemplates, tplDefault: design, tplCurrent: design }
