@@ -8,7 +8,7 @@ require_once 'owDate.php';
  * @see http://www.php.net/manual/fr/function.is-numeric.php
  */
 class owDateTest extends PHPUnit_Framework_TestCase
-{
+{/**/
   public function testIsPassee() 
   {
 	$db = false;
@@ -24,7 +24,7 @@ class owDateTest extends PHPUnit_Framework_TestCase
 		var_dump('date full', $sNowFull); exit;
 	}
 	$tests = array(
-		/* */
+		 
 		array('10/01/2020', false,),
 		array('10/05/2010', true),
 		array($sNowDate, true), // date auj sans heure est consideree egale a 00:00:00	
@@ -38,6 +38,24 @@ class owDateTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($expect, $got,
 			printf('isPassee(%s) should be %s'."\n", $date, $expect) 
 		);
+	}
+  }
+  
+  public function testErreurs()
+  {
+	$db = false;
+	$tests = array(
+		array('10-01-2020', 'nok'),
+		array('10/01/2020', 'ok'),
+	);
+	foreach ($tests AS $d) {
+	    if ($db) { print 'testing ' . $d[0] . "\n"; }
+		try {
+			$got = owDate::isPassee($d[0]);
+		} catch (Exception $E) { continue; }
+		if ('nok' == $d[1]) {
+			$this->fail('An expected exception has not been raised.');
+		}
 	}
   }
 
