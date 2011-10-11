@@ -8,8 +8,8 @@
  * * * function stripSpaces()
  * @throws Exception
  */
-class owDate {
-
+class owDate 
+{
     /**
      *
      * @param string $str : 'dd/mm/yyyy' / 'dd/mm/yyyy hh:mn:ss'
@@ -20,10 +20,10 @@ class owDate {
         $origin = __CLASS__ . '::' . __FUNCTION__;
 		if ($db) { var_dump($origin, $date); }
         if (preg_match('#^(\d{2})/(\d{2})/(\d{4})$#', $date, $p)) {
-		        if ($db) {
-            var_dump($origin, 'apres preg_match', $p);
-            // exit;
-        }
+		    if ($db) {
+				var_dump($origin, 'apres preg_match', $p);
+				// exit;
+			}
             $formatUS = $p[3] . '-' . $p[2] . '-' . $p[1];
         } else if (preg_match('#^(\d{2})/(\d{2})/(\d{4})\s{1}(\d{2}):(\d{2}):(\d{2})$#', $date, $p)) {
             $formatUS = $p[3] . '-' . $p[2] . '-' . $p[1] . ' ' . $p[4] . ':' . $p[5] . ':' . $p[6];
