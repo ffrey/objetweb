@@ -11,7 +11,8 @@
 class owDate 
 {
     /**
-     *
+     * ! la date du jour sans heure est consideree comme PASSEE !!!
+	 * 
      * @param string $str : 'dd/mm/yyyy' / 'dd/mm/yyyy hh:mn:ss'
      * @return bool
      */

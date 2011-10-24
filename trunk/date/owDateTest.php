@@ -24,10 +24,14 @@ class owDateTest extends PHPUnit_Framework_TestCase
 		var_dump('date full', $sNowFull); exit;
 	}
 	$tests = array(
-		 
 		array('10/01/2020', false,),
+		array('03/01/2020', false),
+		array('03/01/2020 22:34:11', false),
 		array('10/05/2010', true),
-		array($sNowDate, true), // date auj sans heure est consideree egale a 00:00:00	
+		array('04/05/2010', true),
+		array('04/05/2010 22:34:11', true),
+		array($sNowDate, true), // date auj sans heure est consideree egale a 00:00:00 du matin	
+		// autrement dit : la date du jour sans heure est consideree comme PASSEE !!!
 		array($sNowMoinsUneSeconde, true),
 		array($sNowPlusUneSeconde,   false),
 	);
@@ -41,6 +45,10 @@ class owDateTest extends PHPUnit_Framework_TestCase
 	}
   }
   
+  /**
+   * @todo : test well formated impossible dates (ex. : 32/01/2011, 04/14/2011, etc.)
+   *         test without 0 : 4/12/2010
+   */
   public function testErreurs()
   {
 	$db = false;
