@@ -44,5 +44,19 @@ class owCsv
 		return $ret;
 	}
 
+	/**
+	 * lecture d'un fichier csv dans un tableau
+	 */
+	static public function read($filepath, $csv_separator = ';')
+	{
+		$ret = array();
+		if ( ($handle = fopen($filepath, "r") ) !== FALSE) {
+			while ( ($data = fgetcsv($handle, 0, $csv_separator) ) !== FALSE) {
+				$ret[] = $data;
+			}
+		}
+		
+		return $ret;
+	}
 
 }
