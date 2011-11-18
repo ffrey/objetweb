@@ -45,6 +45,15 @@ class ptLangTest extends PHPUnit_Framework_TestCase
 			$this->assertEquals($expected, $got);
 			$this->assertEquals($got, $got2);
 		}
+		
+		foreach ($tests['es'] AS $code => $expected) {
+			$code = ucfirst($code);
+			// $got  = ptLang::get()->_($code);
+			$got2 = ptLang::__($code);
+			$this->assertEquals($expected, $got,
+			'beware ! naming of translation entries is CASE SENSITIVE');
+			$this->assertNotEquals($got, $got2);
+		}
 		/* */
 	}
 	

@@ -127,7 +127,7 @@ $ret = array();
 	}
 	
 		/*** *** protected ***/
-/**
+	/**
 	 * @param array $newFields : array('<field>' => 'display_<field>'[,...])
 	 */
 	protected static function restorePositions(array $newFields, array $oldPositions, sfWidgetFormSchema $w)
