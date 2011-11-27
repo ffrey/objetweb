@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>pages</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css">
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+    <script>
+
+    $('#page1').live('pageshow',function(event, ui){
+  alert('This page was just hidden: '+ ui.prevPage);
+});
+
+$('#page1').live('pagehide',function(event, ui){
+  alert('This page was just shown: '+ ui.nextPage);
+});
+
+$('#page1').live('pagebeforecreate',function(event){
+  alert('This page was just inserted into the dom!');
+});
+
+$('#page1').live('pagecreate',function(event){
+  alert('This page was just enhanced by jQuery Mobile!');
+});
+  </script>
+  </head>
+  <body>
+    <!-- begin first page -->
+    <section id="page1" data-role="page">
+      <header data-role="header">
+        <h1>jQuery Mobile</h1>
+      </header>
+      <div data-role="content" class="content">
+        <p>First page!</p>
+        <p><a href="#page2">Go to Second Page</a></p>
+        <p><a href="external.html">to outside world !</a></p>
+        <p><a href="externalSynch.html" data-rel="dialog">synch to outside</a></p>
+      </div>
+      <footer data-role="footer">
+        <h1>O'Reilly</h1>
+      </footer>
+    </section>
+    <!-- end first page -->
+    <!-- Begin second page -->
+    <section id="page2" data-role="page">
+      <header data-role="header">
+        <h1>jQuery Mobile</h1>
+      </header>
+      <div data-role="content" class="content">
+        <p>Second page!</p>
+        <p><a href="#page3">Go to Third Page</a></p>
+      </div>
+      <foote data-role="footer" r="">
+        <h1>O'Reilly</h1>
+      </foote></section>
+    <!-- end second page -->
+    <!-- begin third page -->
+    <section id="page3" data-role="page">
+      <header data-role="header">
+        <h1>jQuery Mobile</h1>
+      </header>
+      <div data-role="content" class="content">
+        <p>Third page!</p>
+        <p><a href="#page1">Go back to First Page</a></p>
+      </div>
+      <footer data-role="footer">
+        <h1>O'Reilly</h1>
+      </footer>
+    </section>
+  </body>
+</html>
+<!-- end third page -->

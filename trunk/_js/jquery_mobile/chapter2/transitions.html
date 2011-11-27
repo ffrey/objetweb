@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>formulaire</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css">
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+</head>
+  <body> <!-- begin first page -->
+<!-- begin first page -->
+<section id="page1" data-role="page">
+  <header data-role="header"><h1>jQuery Mobile</h1></header>
+  <div  data-role="content" class="content">
+    <p>First page!</p>
+    <p><a href="#page2" data-transition="slidedown">Flip to Page 2</a></p>
+  </div>
+  <footer data-role="footer"><h1>O'Reilly</h1></footer>
+</section>
+<!-- end first page -->
+<!-- Begin second page -->
+<section id="page2" data-role="page">
+  <header data-role="header"><h1>jQuery Mobile</h1></header>
+  <div data-role="content" class="content">
+    <p>Second page!</p>
+    <p><a href="#page1" data-transition="flip" data-direction="reverse">Flip back to Page 1</a></p>
+  </div>
+  <foote data-role="footer"r><h1>O'Reilly</h1></footer>
+</section>
+<!-- end second page -->
+  </body>
+</html>
+<!-- end third page -->

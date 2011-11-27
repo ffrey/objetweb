@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>animations</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css">
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+</head>
+<body>
+<!-- begin first page -->
+<section id="page1" data-role="page">
+  <header data-role="header">
+      <h1>CSS 3 Animations</h1>
+  </header>
+  <div  data-role="content" class="content">
+      <p class="show-menu">Show/Hide Menu</p>
+    <div class="sliding-menu slide out">Menu</div>
+  </div>
+  <footer data-role="footer">
+      <h2>jQuery Mobile</h2>
+  </footer>
+</section>
+<!-- end first page -->
+<script>
+$(document).ready(function() {
+  $(".show-menu").click(function() {
+    alert('hello');
+    $(".sliding-menu").toggleClass("reverse out in");
+  })
+})
+</script>
+</body>
+</html>
+
+<
+</html>

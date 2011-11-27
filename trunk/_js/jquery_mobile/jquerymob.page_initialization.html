@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>page initialization</title>
+  </head>
+  <body>
+    <p></p>
+    <h1>Page Initialization in jQuery Mobile</h1>
+    <p>As jQuery Mobile initializes, it runs through the following steps:<br />
+    </p>
+    <ol>
+      <li>Triggers the <span style="font-weight: bold;">beforecreate</span>
+        event (see “Initialization Events” on page 83 in Chapter 5 for more
+        information)</li>
+      <li>Adds the ui-page class to all page elements</li>
+      <li>Adds the ui-nojs class  to all page elements  that had
+        data-role="none" or data-role="nojs" applied to them</li>
+      <li>Looks for child elements that have a data- attribute and: <br />
+        a.Adds theming classes<br />
+        b.Adds appropriate ARIA role and aria-level attributes<br />
+        c.Adds a back button to the header (if there isn’t one already in the
+        markup) for pages beyond the first</li>
+      <li>Then it enhances form controls, buttons, and control groups (see
+        Chapter 3 for more information on these individual elements)</li>
+      <li>Finally, it fixes toolbars as specified (see  “Positioning the Header
+        and Footer” on page 43 in Chapter 3 for details)</li>
+    </ol>
+    <p></p>
+  </body>
+</html>
