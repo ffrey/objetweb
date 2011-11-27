@@ -1,0 +1,1 @@
+$.mobile.ns = 'ow';

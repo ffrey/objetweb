@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>formulaire</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css">
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+    <script>
+// using changePage to submit a form
+function validateFormData()
+{
+    return true;
+}
+$("#my-form").bind("submit", function() {
+  var myFormData = $("#my-form").seraliaze();
+  if (validateFormData()) {
+    changePage({
+      url: "form-processor.php",
+      type: "post",
+      data: myFormData
+    }, "flip", false, false);
+  }
+});
+</script> </head>
+  <body> <!-- begin first page -->
+    <section id="page1" data-role="page">
+      <header data-role="header">
+        <h1>jQuery Mobile</h1>
+      </header>
+      <div data-role="content" class="content">
+        <p>First page!</p>
+        <form action="form-processor.php" method="post" name="my-form"> <label
+
+            for="nom">nom</label> <input name="nom" id="nom" type="text"> <br>
+          <input name="submit" type="submit">valider </form>
+      </div>
+      <footer data-role="footer">
+        <h1>O'Reilly</h1>
+      </footer>
+    </section>
+    <!-- end first page -->
+  </body>
+</html>
+<!-- end third page -->

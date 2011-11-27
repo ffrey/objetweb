@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>pages</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css">
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+
+    <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+  
+<script>
+function refreshFeed()
+{
+    console.log('refreshFedd');
+}
+$(document).ready(function() {
+    // Refresh the feed on first load
+    // (pretend we've written this function elsewhere)
+    refreshFeed();
+    $("#page1").bind("pageshow", function(event, ui) {
+        // Refresh the feed on subsequent page shows
+        refreshFeed();
+    })
+})
+</script>
+  
+  </head>
+
+  <body>
+<!-- begin first page -->
+<section id="page1" data-role="page">
+  <header data-role="header">
+      <h1>jqmTwit</h1>
+  </header>
+  <div  data-role="content" class="content">
+    <p>Twitter feed goes here.</p>
+    <p><a href="#page2">Settings</a></p>
+  </div>
+  <footer data-role="footer">
+      <h2>Because the world needed another Twitter app.</h2>
+  </footer>
+</section>
+<!-- end first page -->
+<!-- Begin second page -->
+<section id="page2" data-role="page">
+<header data-role="header">
+      <h1>jqmTwit: Settings</h1>
+  </header>
+  <div  data-role="content" class="content">
+    <p>Settings go here.</p>
+  </div>
+  <footer data-role="footer">
+      <h2>Because the world needed another Twitter app.</h2>
+  </footer>
+</section>
+<!-- end second page -->
+  </body>
+</html>
+<!-- end third page -->
