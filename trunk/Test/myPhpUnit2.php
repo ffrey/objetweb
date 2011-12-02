@@ -1,6 +1,6 @@
 <?php
-require_once 'PHPUnit/Framework.php';
-require_once 'helper/owConsoleHelper.php';
+// require_once 'PHPUnit/Framework.php';
+require_once dirname(__FILE__).'/../helper/owConsoleHelper.php';
 
 /*** extra checks ***/
 /**
