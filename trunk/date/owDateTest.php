@@ -29,7 +29,10 @@ class owDateTest extends PHPUnit_Framework_TestCase
 		array('03/01/2020 22:34:11', false),
 		array('10/05/2010', true),
 		array('04/05/2010', true),
+		array('04 05 2010', true),
+		array('04-05-2010', true),
 		array('04/05/2010 22:34:11', true),
+		array('04-05-2010 22:34:11', true),
 		array($sNowDate, true), // date auj sans heure est consideree egale a 00:00:00 du matin	
 		// autrement dit : la date du jour sans heure est consideree comme PASSEE !!!
 		array($sNowMoinsUneSeconde, true),
@@ -40,7 +43,7 @@ class owDateTest extends PHPUnit_Framework_TestCase
 		$expect = $t[1];
 		$got = owDate::isPassee($date);
 		$this->assertEquals($expect, $got,
-			printf('isPassee(%s) should be %s'."\n", $date, $expect) 
+			sprintf('isPassee(%s) should be %s'."\n", $date, $expect?'true':'false') 
 		);
 	}
   }
@@ -53,8 +56,11 @@ class owDateTest extends PHPUnit_Framework_TestCase
   {
 	$db = false;
 	$tests = array(
-		array('10-01-2020', 'nok'),
-		array('10/01/2020', 'ok'),
+		array('10-01-2020',  'ok'),
+		array('10/01/2020',  'ok'),
+		array('10 01  2020', 'nok'),
+		array('10-01- 2020', 'nok'),
+		array('10:01:2020',  'nok'),
 	);
 	foreach ($tests AS $d) {
 	    if ($db) { print 'testing ' . $d[0] . "\n"; }
@@ -62,7 +68,7 @@ class owDateTest extends PHPUnit_Framework_TestCase
 			$got = owDate::isPassee($d[0]);
 		} catch (Exception $E) { continue; }
 		if ('nok' == $d[1]) {
-			$this->fail('An expected exception has not been raised.');
+			$this->fail(printf('An expected exception has not been raised on %s', $d[0]) );
 		}
 	}
   }
