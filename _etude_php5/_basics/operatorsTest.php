@@ -58,7 +58,7 @@ class operatorsTest extends PHPUnit_Framework_TestCase
 		step('Execution Operators');
 		cmd('Use backticks `` to execute the content as shell command');
 		$expect = shell_exec('ls -ls');
-		$got = `ls -ls`;
+		$got    = `ls -ls`;
 		$this->assertEquals($got, $expect);
 	}
 	
