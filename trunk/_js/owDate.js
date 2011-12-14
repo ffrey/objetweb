@@ -38,3 +38,27 @@ function isDatePassee(annee, mois, jour)
 {
 	return !isDateFuture(annee, mois, jour);
 }
+
+function getNextMonth(annee, mois, jour)
+{
+		var DB = true;
+	var mois  = parseInt(mois, 10);
+	var annee = parseInt(annee, 10);
+	if (2000 > annee) {
+		annee = 2000 + annee;	
+	}
+	if (undefined == jour) {
+		jour = 1;
+	}
+	if (isNaN(annee) ) {
+		if (DB) { console.log('isDateFuture : ERREUR ('+annee+')'); }
+		return false;
+	}
+	var nextMois = mois + 1;
+	var nextAnnee = annee;
+	if (12 < nextMois) {
+		nextAnnee++;
+		nextMois = 1;
+	}
+	return [nextAnnee, nextMois];
+}
