@@ -17,34 +17,50 @@
 	  var c_jour  = D.getDate();
 	  console.log('jour courant : ' + c_jour + '/mois courant : ' + c_mois + '/annee courante : ' + c_annee);
 	  var tests = [
-	  /*
+	  /**/
 	  [false, '01' , '2010']
 	  ,[false, '10' , '2010']
 	  ,[false, 1    , 2010] // les argments passes pt etre string ou number
 	  ,[true , '03' , '2014']
 	  ,[true , 3    , 2014]
 	  ,[true , 12   , 2015]
-	  ,[true , 05   , 15]*/
-	  [false, c_mois, c_annee, c_jour] // la date du jour est consideree comme passee car fixee a 00h00 du matin !
+	  ,[true , 05   , 15]
+	  ,[false, c_mois, c_annee, c_jour] // la date du jour est consideree comme passee car fixee a 00h00 du matin !
 	  // erreurs
 	  ,[true, 14   , 2014] // si le mois depasse 12, l'annee est augmentee jusqu'a trouver une date valide (exemple 14/2014 => 02/2015 !)
 	  ,[false, ''  , '']
 	  ];
-	  $.each(tests, function(i, t) { 
-	  console.log(t[0]);
-		var exp = t[0];
-		
-		var jour = 1;
-		if (undefined != t[3]) {
-			jour = t[3];
-		}
-		var got = isDateFuture(t[2], t[1], jour);
-		equal(got, exp, 'is '+t[1]+t[2]+' future ? : ' + got);
-		var got = isDatePassee(t[2], t[1], jour);
-		equal(got, !exp, 'is '+t[1]+t[2]+' passee ? : ' + got);
-	}); 
-});
-
+		$.each(tests, function(i, t) { 
+			console.log(t[0]);
+			var exp = t[0];
+			
+			var jour = 1;
+			if (undefined != t[3]) {
+				jour = t[3];
+			}
+			var got = isDateFuture(t[2], t[1], jour);
+			equal(got, exp, 'is '+t[1]+t[2]+' future ? : ' + got);
+			var got = isDatePassee(t[2], t[1], jour);
+			equal(got, !exp, 'is '+t[1]+t[2]+' passee ? : ' + got);
+		}); 
+	}); // fin test isDateFuture
+	/* */
+	test("getNextMonth", function() {
+		var tests = [
+		[[10, 2010],   [2010, 11]],
+		[[12, 2011],   [2012, 1]],
+		[['01', 2010], [2010, 2]],
+		[['12', 12],   [2013, 1]]
+		];
+		$.each(tests, function(i, t) {
+			var exp   = t[1];
+			var year  = t[0][1];
+			var month = t[0][0];
+			var got = getNextMonth(year, month);
+			console.log('got : ' + got.join(', ') + ' / expected : ' + exp.join(', ') );
+			equal(got, exp, 'got '+got.join(',') );
+		});
+	});
   });
   </script>
   
