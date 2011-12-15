@@ -1,0 +1,6 @@
+# namespaces
+! vous pouvez utiliser le mot clé 'const' pour créer une constante dans un namespace !!!
+Avantage : vous n'avez pas à spécifier tout le namespace !
+
+Si vous utilisez define() sans spécifier le namespace, la constante est creee ds le scope global !
+
