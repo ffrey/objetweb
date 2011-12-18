@@ -1,0 +1,15 @@
+# namespaces
+
+## constantes
+! vous pouvez utiliser le mot clé 'const' pour créer une constante dans un namespace !!!
+Avantage : vous n'avez pas à spécifier tout le namespace !
+
+Si vous utilisez define() sans spécifier le namespace, la constante est creee ds le scope global !
+
+## résolution des noms sans qualifications 
+### classes
+Une classe sans qualif est recherchee uniquement dans le namespace courant.
+
+### fonctions et constantes
+Fonctions et constantes sans qualif sont recherchees dans le namespace courant d'abord, puis
+ dans l'espace global.

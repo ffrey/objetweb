@@ -1,5 +1,6 @@
 <?php
 // C:\wamp\lib\ow\_etude_php5\_basics\namespaces>php535 namespaces.php
+// home : C:\EasyPHP_3_0\php\ow\_etude_php5\_basics\namespaces\php535 namespaces.php
 namespace my\name; // see "Defining Namespaces" section
 
 class MyClass {}
