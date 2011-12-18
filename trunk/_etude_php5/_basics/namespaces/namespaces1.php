@@ -1,6 +1,6 @@
 <?php
-namespace ow\lib;
-require 'namespaces/lib.php';
+// namespace ow\lib;
+require 'lib/lib.php';
 //phpinfo();
 
 $a = new Text();
