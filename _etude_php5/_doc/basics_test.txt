@@ -1,0 +1,18 @@
+1/ A: 4
+
+2/ E: $_ARGV <= ??? : trés surprenant : poser la question sur afup
+
+3/ D:  <= C: use myapp\utils\hello
+
+4/ D: 
+
+5/ C: 
+   D:
+   
+6/ __DEPRECATED__ <= E_DEPRECATED
+
+7/ A: <= upgrade to latest version of PHP
+   C:
+
+8/ B: Two <= syntax error !!!
+
