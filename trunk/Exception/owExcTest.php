@@ -2,7 +2,7 @@
 /**
  * 
  */
-// phpunit C:\wamp\lib\ow\owExcTest.php
+// phpunit C:\wamp\lib\ow\Exception\owExcTest.php
 
 require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 require_once 'owExc.class.php';
@@ -31,17 +31,28 @@ class owExcTest extends PHPUnit_Framework_TestCase
     {
 		$newDefault = 'oups !-(';
 		owExc::set('defaultPublicMsg', $newDefault);
-    	$easyMsg = 'easy man !';
-    	try {
-    		throw new owExc('too complicated for average user ## ' . $easyMsg);
-    	} catch (owExc $e) {
-    		$this->assertEquals($easyMsg, $e->getPublicMsg(), 'with sep, the initial msg is thrown');
-    	}
-		$sepEasyMsg = '## '.$easyMsg;
-		    	try {
+		$aPublicMsg = array();
+		$aPublicMsg[] = 'easy man !';
+		$aPublicMsg[] = 'La ville ne correspond pas au code postal renseign&eacute;.';
+		$tests = array(
+			'too complicated for average user ## ' . $aPublicMsg[0],
+			sprintf('%s / %s ## '.$aPublicMsg[1], '95000', 'paris'),
+		);
+		$i = 0;
+    	foreach ($tests AS $t) {
+			try {
+				throw new owExc($t);
+			} catch (owExc $e) {
+				$this->assertEquals($aPublicMsg[$i], $e->getPublicMsg(), 'with sep, the initial msg is thrown');
+			}
+			$i++;
+		}
+
+		$sepEasyMsg = '## '.$aPublicMsg[0];
+		try {
     		throw new owExc($sepEasyMsg);
     	} catch (owExc $e) {
-    		$this->assertEquals($easyMsg, $e->getPublicMsg(), 'with prepended sep, the initial msg is thrown');
+    		$this->assertEquals($aPublicMsg[0], $e->getPublicMsg(), 'with prepended sep, the initial msg is thrown');
     	}
     }
 	
