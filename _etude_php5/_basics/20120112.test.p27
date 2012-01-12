@@ -1,0 +1,19 @@
+1/ 4
+
+2/ $_ARGV : FAUX
+
+3/ D ?    : FAUX
+
+4/ D
+
+5/ phpinfo
+   get_loaded_extensions ?
+   
+6/ E_DEPRECATED
+
+7/ C
+   D
+   
+   
+8/ C (because of reserved CONSTANT !)
+
