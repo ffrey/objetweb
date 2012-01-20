@@ -9,3 +9,9 @@ require_once 'lib/lib_exo.php';
 use myapp\utils\hello as foo;
 
 echo foo\world();
+
+echo "\n\r";
+
+// use myapp\utils\hello\Voice;
+$V = new foo\Voice();
+echo $V->sayHello('Lisa');
