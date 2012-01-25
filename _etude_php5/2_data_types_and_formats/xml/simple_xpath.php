@@ -2,10 +2,9 @@
 /**
  * 2012 01 24 : comment afficher avec le bon encoding ?
  *
- * use : http://simplehtmldom.sourceforge.net/ <= http://davidwalsh.name/php-notifications
- *       http://framework.zend.com/manual/en/zend.dom.query.html
+ * @see simple_zend_dom.php pour ex d'utilisation de Zend_Dom_Query : http://framework.zend.com/manual/en/zend.dom.query.html
  */
-// C:\wamp\lib\ow\_etude_php5\2_data_types_and_formats\xml\php53 simple_xpath.php
+// php53 C:\wamp\lib\ow\_etude_php5\2_data_types_and_formats\xml\simple_xpath.php
 # recup html d'une page web
 // create a new cURL resource
 $ch = curl_init();
@@ -29,5 +28,5 @@ $path = "channel/item/title";
 $result = $xml->xpath($path);
 // var_dump($result);
 while(list( , $node) = each($result)) {
-    echo 'content ',$node,"\n";
+    echo 'content : ',htmlentities($node),"\n";
 }
