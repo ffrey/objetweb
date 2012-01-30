@@ -1,3 +1,8 @@
 
-BASICS : p. => p. 23
+BASICS 
 # 2011 12 18 : p.19 : NAMESPACES : "SET" ???
+
+DATA TYPES & FORMATS
+
+STRINGS 
+p52
