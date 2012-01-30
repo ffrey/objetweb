@@ -1,6 +1,10 @@
 1/ D: nothing !
 
-2/ 
+2/ E: 
+A <= DateTimeZone::listIdentifiers()
+B <= DateTime::modify()
+C <= DatePeriod() !
+D <= DateTime::COOKIE
 
 3/ A:
 (on doit utiliser appendElement pour introduire un nouvel element)
