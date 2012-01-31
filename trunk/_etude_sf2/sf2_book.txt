@@ -1,0 +1,10 @@
+# creation d'une page
+
+## creer un bundle
+1/ app/console bundle:init <namespace> directory under current
+
+2/ 
+- Enable the bundle inside the AppKernel::registerBundles() method.
+- Ensure that the namespace is registered with the autoloader.
+- If using routing, import the bundle's routing resource.
+- Starting building your bundle!
