@@ -100,18 +100,18 @@ class ptLogTest extends PHPUnit_Framework_TestCase
 			'default' => array(
 		        'writerParams' => array(
 		            'stream'   => $logFile,
-		),
-		),
+					),
+			),
 			'autre_ficher' => array(
 		        'writerName'   => 'Stream',
 				'writerParams' => array(
 		            'stream'   => $otherFile,
-		),
-		        'formatterName' => 'Simple',
-		        'formatterParams' => array(
-		            'format'   => '%timestamp%: %message% -- %priorityName% (%priority%)'."\r",
-		),
-		),
+				),
+			        'formatterName' => 'Simple',
+			        'formatterParams' => array(
+			            'format'   => '%timestamp%: %message% -- %priorityName% (%priority%)'."\r",
+				),
+			),
 		);
 		ptLogW::init($log_configs);
 		$s = 'autre hello';
@@ -140,6 +140,31 @@ class ptLogTest extends PHPUnit_Framework_TestCase
 		//
 		ptLogW::logAll($msg1, Zend_Log::CRIT);
 		$this->_mustBeIn('CRIT', $logFile);
+	}
+
+	public function testChange()
+	{
+		// var_dump(ptLogW::getPriorities() );
+		$logFile = self::$d['logFile'];
+		$msg1 = 'ici'; $msg2 = 'et là';
+		$msg_seul = 'seul !-(';
+		ptLogW::init(self::$default_config);
+		/*
+		 * on veut modifier l'emplacement du fichier de log
+		 */
+		$root = dirname(__FILE__);
+		$nouveau_fichier = $root.'\toto\nouveau_fichier.txt';
+
+		$fichier_existe = file_exists($nouveau_fichier);
+		$this->assertFalse($fichier_existe);
+		ptLogW::change('stream', $nouveau_fichier);
+		ptLogW::logAll($msg1, $msg2);
+
+		$fichier_existe = file_exists($nouveau_fichier);
+		$this->assertTrue($fichier_existe);
+		$this->_mustBeIn($msg1, $nouveau_fichier);
+		cmd('look into ' . $nouveau_fichier, true, true);
+		self::$files_to_delete[] = $nouveau_fichier;
 	}
 	
 	public function testLog()
