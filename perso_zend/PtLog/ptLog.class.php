@@ -176,6 +176,74 @@ class ptLog
 		}
 		return NULL;
 	}
+	
+	/**
+	 * Change format (formatage de chaque ligne de log)
+	 *
+	 * @see http://framework.zend.com/manual/fr/zend.log.factory.html
+	 * @param string $sFormat
+	 */
+	static public function setFormat($sFormat = null, $writer = 'default')
+	{
+		self::_checkInit();
+		
+		$aConfig = self::$config[$writer];
+
+		$sCurrentFormat = $aConfig['formatterParams']['format'];
+		
+		if ($sCurrentFormat != $sFormat && !is_null($sFormat)) {
+			self::$config[$writer]['formatterParams']['format'] = $sFormat;
+			self::init(self::$config);
+		}
+		
+		return $sFormat;
+	}
+	
+	/**
+	 * Change stream : le chemin absolu + nom du fichier, dans lequel les logs seront
+	 *... enregistres
+	 * 
+	 * @param string $sStream
+	 */
+	static public function setStream($sStream = null, $writer = 'default')
+	{
+		self::_checkInit();
+		
+		$aConfig = self::$config[$writer];
+		
+		if ('Stream' == $aConfig['writerName']) {
+			$sCurrentStream = $aConfig['writerParams']['stream'];
+			
+			if ($sCurrentStream != $sStream && !is_null($sStream)) {
+				self::$config[$writer]['writerParams']['stream'] = $sStream;
+				self::init(self::$config);
+			}
+		}
+		
+		return $sStream;
+	}
+
+	/**
+	 * allows to change property of desired writer ('default' by default)
+	 * presently, 2 props can be changed : 'stream' (file where log is output) + 'format' (of each log line)
+	 *
+	 * @throws Zend_Log_Exception : if $prop unknown !
+	 */
+	static public function change($prop, $val, $writer = 'default')
+	{
+		$prop = strtolower($prop);
+		switch ($prop) {
+			case 'stream':
+			self::setStream($val, $writer);
+			break;
+			case 'format':
+			self::setFormat($val, $writer);
+			break;
+			default:
+				throw new Zend_Log_Exception (sprintf('[%s] Unknown property : %s', __CLASS__.'::'.__FUNCTION__, $prop) );
+			break;
+		} 
+	}
 
 	/*** PROTECTED ***/
 
