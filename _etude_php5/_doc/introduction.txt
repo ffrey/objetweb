@@ -1,0 +1,21 @@
+# introduction
+exam : 70 questions into 10 areas ; 90 minutes to answer
+
+## types of questions
+! answer all questions for incorrect answer is not of no avail.
+
+1. Multiple choice with one answer
+
+2.      "      "   with several answers
+
+3. Freetext
+! NO WHITESPACE AT ALL ! (whitespace = end of answer !)
+
+4. true/false
+
+## ! mark questions for review !
+<= the software allows you to mark questions for 
+later review prior to submit !
+
+
+

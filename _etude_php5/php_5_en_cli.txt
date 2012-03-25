@@ -1,0 +1,7 @@
+# en local, d'abord s'assurer que le bon php.ini sera chargé
+set PHPRC="C:\EasyPHP_3_0\php53"
+
+puis lancer l'executable php 5.3
+# une solution pratique : le renommer en php53.exe par ex.
+#... et s'assurer qu'il est dans le path windows,
+#... puis l'appeler par c:/php53 -v
