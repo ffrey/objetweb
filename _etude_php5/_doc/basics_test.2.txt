@@ -1,0 +1,31 @@
+1/ B : C
+
+2/ A
+   B
+   D
+   
+3/ A
+
+4/ 4 * 3 => 12
+
+5/ C @see
+
+6/ A
+
+7/ @see
+
+8/ B @see
+
+9/ D
+100 => 100000 => 32
+4 * (2 puissance 3) => 4 * 8 => 32
+
+10/ Yes
+( TRUE)
+
+11/ 
+si maj > min
+(false) + 2 * (true) + 3 * (false)
+0 + 2 + 0
+2
+
