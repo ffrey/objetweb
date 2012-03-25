@@ -1,8 +1,13 @@
-
+# book
 BASICS 
-# 2011 12 18 : p.19 : NAMESPACES : "SET" ???
+## 2011 12 18 : p.19 : NAMESPACES : "SET" ???
 
 DATA TYPES & FORMATS
 
 STRINGS 
 p54
+
+# videos
+INTRODUCTION
+BASICS
+## 2012 03 25 : 74mns

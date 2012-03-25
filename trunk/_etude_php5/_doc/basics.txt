@@ -2,3 +2,33 @@
 !!! Les noms de fonctions sont insensibles à la casse !!!
 (empty() est égal à EMPTY() !)
 
+## nommage des variables
+1st : $
+2d  : _ ou lettre !
+3d  : lettre, digit ou _
+
+# bitwise operators 
+## logical
+&
+|
+^ 
+## shift !
+2 methods of calculation for shift operations
+<< : left-shift : multiply   by 2 x times (x being the operand after operator "<<"
+                : moving bits x bits to the left by adding 0 bits
+>> : right-shift : divide "                 "
+                   moving  "        "       right by removing all bits
+## negate
+~
+
+# types
+## float / double
+2 represantations : 
+- with '.' : 1.234
+- with e/E : 1234e3
+## integers
+decimal     : [1-9][0-9]*
+            | 0
+hexadecimal : 0[xX][0-9a-fA-F]+
+octal       : 0[0-7]+
+binary      : 0b[01]+
