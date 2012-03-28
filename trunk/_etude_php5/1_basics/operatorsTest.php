@@ -7,12 +7,14 @@ class operatorsTest extends PHPUnit_Framework_TestCase
 	public function testEither()
 	{
 		step('Bitwise Operators : & | ^');
-		cmd('return integer : 1 or 0');
+		cmd('^ : Xor');
 		$tests = array(
 		array(1 ^ 0, 1),
 		array(1 ^ 1, 0),
-
+        array(E_CORE_WARNING | E_PARSE, 36),
+        // 32 | 4 => 100000 | 000100 => 100100 = 36
 		);
+        
 		foreach ($tests AS $t) {
 			
 			$this->assertEquals($t[0], $t[1]);

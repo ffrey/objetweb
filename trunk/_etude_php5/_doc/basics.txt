@@ -40,6 +40,11 @@ php 5.3 : 2 new sections
 
 .user.ini : only for CGI/FastCGI ! (= .htaccess albeit with .ini syntax)
 
+# gestion de l'affichage des erreurs
+! display_errors : stderr / stdout depuis php 5.3 !
+
+E_ALL : 
+
 
 
 
