@@ -1,0 +1,18 @@
+1/ 
+$$ref
+
+2/ substr("123456", -4, -2)
+=> 34
+
+3/ 
+=> finds the $nr of occurences of $y withing $x
+substr_count($hay, $needle)
+
+4/ B
+$str = 'Hello Worl';
+echo substr($str, -1, 10);
+
+5/ A
+if equal => True * 0 => 0
+if not   => False * -3 => 0 * -3 => 0
+

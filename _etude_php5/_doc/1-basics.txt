@@ -33,6 +33,12 @@ hexadecimal : 0[xX][0-9a-fA-F]+
 octal       : 0[0-7]+
 binary      : 0b[01]+
 
+## strings
+NOWDOC syntax
+$str = <<<'here'
+look at $var not being interpreted !
+'here';
+
 # configuration
 php.ini : sections & directives
 php 5.3 : 2 new sections 

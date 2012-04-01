@@ -1,0 +1,31 @@
+1/ 
+AC
+
+2/ 
+E
+
+3/ D
+*/resource[@cost > 5]
+
+4/ B
+A : sprintf => no output
+B : no xpath method on DOMDocument !
+C : ok
+D : getElementByName n'existe pas ! => getElementsByTagName
+
+5: A
+
+6: 
+B : nothing
+
+7:
+Is a SOAP servivce also a REST service
+REST : uses http / uses http verbs & status codes
+B : no
+
+8: What is JSON ?
+=> D : format for serialization of data between diff prog languages
+
+9: Which method from DateTime is responsible for 
+setting the time ?
+setTime

@@ -1,0 +1,43 @@
+# XML
+## SimpleXML
+### instanciation
+to load : 2 ways : 
+- via function : simplexml_load_file / simplexml_load_string
+- via instantiation : new SimpleXMLElement($string [ou $file si "data_is_url" à true])
+
+### manipulation
+SimpleXMLElement::xpath()
+#### xpath
+// : root
+*  : any node
+@  : attribute
+
+### output
+SimpleXMLElement::asXML/saveXML([$filename])
+return : string if no filename / save into $filename if provided
+
+
+
+# Xml Dom ext
+1/ Créer un element ne l'insere pas dans le dom d'un doc xml
+=> use appendElement/insertBefore
+
+2/ DOMDocument a des props : 
+documentElement : = DomNode root !
+
+### intanciation
+$Dom = new DOMDocument([$version],[$encoding])
+to load : 2 methods :
+- load($filename)
+- loadXML($string)
+
+### manip
+DOMDocument::getElementsByTagName
+                ElementById
+                
+### output
+string DOMDocument::saveXML()
+into file : DOMDocument::save($filename)
+
+# interaction
+simplexml_import_dom() / dom_import_simplexml()

@@ -1,6 +1,0 @@
-# Xml Dom ext
-1/ Créer un element ne l'insere pas dans le dom d'un doc xml
-=> use appendElement/insertBefore
-
-2/ DOMDocument a des props : 
-documentElement : = DomNode root !

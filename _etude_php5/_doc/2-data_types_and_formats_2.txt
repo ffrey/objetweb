@@ -1,0 +1,33 @@
+# web-services
+
+## SOAP
+requires php compiled with libxml
+
+uses a wsdl document (Web Service Description Language)
+
+### in php
+$soap = new SoapServer(<wsdl>)
+$soap->setClass(<class>)
+
+$client = new SoapClient(<wsdl>)
+$client-><class.method>()
++ debugging methods : __getLastRequest(), ...
+
+## REST : REpresentational State Transfer
+based *only* on http
+=> uses http "verbs"
+
+renders xml as well as json !
+
+## ! Context Switching
+= outputting diff returns based on criteria within the request (header or 
+refferer uri).
+The criteria may be contained in 'AcceptHTTP'
+
+## JSON format : can be used within REST
+json_decode($str, $assoc = false, $depth)
+json_encode($str, $options)
+    ! This function only works with UTF-8 encoded data. !
+    ! attention, le return peut être un tableau js (un objet pour js !-)
+      SSI il s'agit d'un tableau séquentiel (commençant par 0)
+json_last_error()
