@@ -1,0 +1,31 @@
+# DATE & TIME
+the date & time function are affected by date.* parameter in php.ini.
+Functions allow for runtime setting : 
+- date_default_timezone_set(<string time zone>)
+...
+## DateTime object 
+### constants to define date formats
+::cookie
+::rss
+...
+
+### methods
+$D = new DateTime(<string> $date = 'now'[, <DateTimeZone $obj>])
+! valid formats for $date include ISO8601 Notations, etc.
+
+$D->add(DateInterval $obj)
+    DateInterval::__construct('P2DT4H') == Period of 2 Days 
+                                            plus 
+                                           Time of 4 Hours
+
+$D->format(<string> $format)
+$D->setTime($h, $m[, $s])
+$D->setDate($y, $m, $day)
+... 
+### static methods
+? most methods are callable statically (__construct(), add(), etc.) ?
+$DateTime = DateTime::createFromFormat(string $formatOfGivenTime, 
+                                       string $givenTime[,
+                                       DatetimeZone]
+                                      
+)

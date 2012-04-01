@@ -1,0 +1,15 @@
+# HTTP protocol
+
+## request
+GET url HTTP/1.0
+Host: 
+...
+empty line
+REQUEST body
+
+## response
+HTTP/1.0 200 OK
+Header
+...
+empty line
+body

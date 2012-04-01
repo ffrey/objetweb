@@ -1,0 +1,13 @@
+# strings
+substr("123456", -4, -2) => 34
+
+strpos($haystack, $needle, $start_offset)
+=> returns False if no match
+           0 if found at position 0 !
+           
+substr_count($haystack, $needle);
+
+## comparison
+int substrcmp($a, $b)
+0 = equal
+! >0 if $a is greater than $b
