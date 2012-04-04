@@ -1,0 +1,14 @@
+# formatting
+sprintf format :
+%
+[-+]
+[0 'suivi_de_remplisseur]
+- : à gauche / rien : à droite
+nombre minimum de caracs
+. suivi de chiffre : spec de precision
+d : entier !
+s : string
+f : float (F : local unaware !!!)
+spec de type
+%[signe][remplisseur][specificateur d'alignement][spec de taille][spec de precision dec][spec de type]
+
