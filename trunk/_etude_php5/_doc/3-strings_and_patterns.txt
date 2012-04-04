@@ -11,3 +11,13 @@ substr_count($haystack, $needle);
 int substrcmp($a, $b)
 0 = equal
 ! >0 if $a is greater than $b
+
+### similarity
+levenshtein != similar_text
+
+### phonetic recognition
+metaphone (EN !) / soundex
+
+### count
+strlen
+str_word_count($str[, return_into_array ?])

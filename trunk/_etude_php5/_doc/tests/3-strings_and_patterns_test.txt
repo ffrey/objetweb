@@ -16,3 +16,14 @@ echo substr($str, -1, 10);
 if equal => True * 0 => 0
 if not   => False * -3 => 0 * -3 => 0
 
+6/ 10
+echo count(explode(".", "3 ... 2 ... 1 ... ignition!") );
+
+7/ B : 255 255.0000
+echo sprintf('%.4d %.4f', 0xFF, 0xFF);
+
+8/ D : none !
+printf("%d and %.2f makes %o",
+4+7, 4/7, 47);
+11 and 0.57 makes 0o
+

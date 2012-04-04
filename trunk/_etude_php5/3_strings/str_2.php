@@ -21,3 +21,13 @@ var_dump($ret);
 
 $cast = (int) True;
 var_dump($cast, True);
+
+echo "======".PHP_EOL;
+$first =  'Qu\'en penses-tu ?'; // 5
+$second = "qu'en pensez-vous ?"; // 13
+var_dump('length', strlen($second) );
+var_dump('levenshtein', levenshtein($first, $second) );
+var_dump('similar_text', similar_text($first, $second) );
+
+echo "======".PHP_EOL;
+var_dump('explode', explode('.', '...') );
