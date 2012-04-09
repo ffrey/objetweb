@@ -1,0 +1,32 @@
+# patterns
+## delimiteurs
+tout sauf backslash et espace !
+
+## boundaries : where to start/end the search within the string !
+
+
+## character classes : between brackets !
+^ (caret symbol) : NOT
+-                : range
+
+### built-in : 
+\d \s \w (letter+digit+underscore!) : + their opposites in capital char !
+. (period char) : any char !
+                 ! PRCE_DOTALL : wether to include CR|LF or not !
+
+## quantifiers
+
+
+## modifiers : after ending pattern delimiter
+\s : PCRE_DOTALL => has '.' include newlines !
+U  : PCRE_UNGREEDY
+
+# pattern behaviors !
+## greediness : by default !
+match is returned with max nb of chars !
+
+## non-greediness : 
+### non-greedy quatifier : adding ? or using U modifier
+*? +?
+
+

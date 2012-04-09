@@ -1,0 +1,16 @@
+# preg functions
+
+## 0/1 preg_match($pattern, $haystack[, $first_match])
+
+! $first_match : 
+$first_match[0] : complete match
+            [1] : first submatch (between parenthesis)
+            ...
+            
+## $nb_of_found_pattern preg_match_all => all matches !
+
+
+## str/array preg_replace(str/array $pattern, str/array $replacement, $haystack)
+! replace pattern may contain references to matches or sub-matches !
+
+## str/array preg_replace_callback !

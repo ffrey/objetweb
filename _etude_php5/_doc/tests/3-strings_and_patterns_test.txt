@@ -27,3 +27,12 @@ printf("%d and %.2f makes %o",
 4+7, 4/7, 47);
 11 and 0.57 makes 0o
 
+9/ /.\.\{3}/
+CD
+
+10/ 
+D : no delimeters !
+A : ioss
+
+11/
+c

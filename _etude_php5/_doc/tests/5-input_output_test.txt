@@ -1,0 +1,16 @@
+1/ 
+$fp = fopen('http://zend.com', 'r');
+file_put_contents('/tmp/content.txt');
+echo stream_get_contents('/tmp/context.txt');
+B ?
+
+2/ is fwrite binary safe ?
+B ?
+
+3/ fgets()
+
+4/ stream_context_set_default()
+B ?
+
+5/ $fp = fopen("compress.zlib://foo-var.txt.gz", "wb");
+B
