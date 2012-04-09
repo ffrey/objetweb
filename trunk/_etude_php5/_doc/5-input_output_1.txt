@@ -1,0 +1,26 @@
+# 2 types of functions : 
+f*() => with resources
+
+file*() => with filename ! : all-in-one funcs
+
+# f functions
+resource fopen(<filename>, <file mode>)
+
+fread(<resource>, <length>) # filesize(<fileNAME>) is handy !
+fwrite(<resource>, <data>)  # fopen with mode 'w' !
+
+fpassthru() : output ***directly*** to output buffer !
+
+## specialized f functions
+fputcsv(<resource>, array <line>)
+
+# file functions : shortcuts !
+str file_get_contents()
+int <nb of bytes written !> file_put_contents()
+array file(<filename>,...)
+int <nb of bytes> readfile(<filename>,...) : outputs to output buffer !
+
+# file operations
+copy()/rename()/unlink()/rmdir()
+
+## wrappers : user witch file operations

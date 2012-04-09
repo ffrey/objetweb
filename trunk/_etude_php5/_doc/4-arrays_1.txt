@@ -1,0 +1,39 @@
+# 2 sorts of arrays : 
+- numerically indexed
+
+- associative
+
+# sorting functions 
+## sort / rsort : ascending order
+- ! on associative array : suppresses the keys !!!
+ => use asort /arsort instead ! (associative sorts will maitain 
+ numerical indexes too !)
+ 
+## natural order "mends" shortcomings of "regular" sorting on strings 
+
+ 
+# slicing : array_slice (== substr !)
+array_slice(array, $offset[, $length = NULL, $preserve_numeric_indices = flase])
+! length can be negative ! == drop n elts from end !
+
+# adding/removing elts
+                            push    unshift     pop     shift
+* adds to the array         X       X
+* reduces the array                             X       X
+* returns new count         X       X
+* returns removed elt                           X       X
+* end the array             X                   X
+* beginning of array                X                   X
+
+! array_unshift reorders all numerical keys !
+
+# looping !
+ATTENTION : array_map & array_walk fonctionnent trés différemment !
+bool array_walk($array, <USER DEFINED func>[, mixed $extra_arg])
+
+array array_map(<any function>, $array)
+
+# comparison of arrays
+array_with_elts_in_a_not_in_b array_diff($a, $b)
+
+

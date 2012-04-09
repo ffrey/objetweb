@@ -1,0 +1,17 @@
+# Streams
+stream = resource object which exhibits a unified api (streamable behavior) 
+for a series of resource objects such as filesytem types and network ones.
+=> scheme://target
+<= opened by fopen, fsockopen, etc. !
+
+A stream is made up of : 
+- a wrapper (scheme) : extra code to handle specific protocol (http, file, ftp, ...) or encoding.
+! php wrapper : access to stdo/stdi
+
+- pipeline(s)
+
+- context : additional information for the given stream
+ex : file => access mode (read, write, etc.)
+     http => header
+     
+-metadata

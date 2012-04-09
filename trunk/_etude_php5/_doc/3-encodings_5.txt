@@ -1,0 +1,7 @@
+# singlebyte / multibyte encodings !
+multi : chinese
+
+single : latin-based
+
+# mbstring module
+mb_check_encoding()
