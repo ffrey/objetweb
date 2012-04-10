@@ -1,0 +1,9 @@
+anonymous function/closure = function with no name
+
+useful for callbacks / as values of variables !!!
+
+# inheritance from parent scope (of declaration, not calling scope !)
+$var = function () use ($parVar1, $parVar2) { // do stuff; }
+
+# functioning
+converted into instance of Closure class !
