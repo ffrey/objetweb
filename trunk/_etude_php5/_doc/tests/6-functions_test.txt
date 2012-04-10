@@ -1,0 +1,35 @@
+1/ AC
+function myFunction() {}
+
+function sub($a, &$b) {}
+
+2/ 
+function get($a, $b, $c=4, $d) {
+    print "[$d, $c, $b, $a]\n";
+}
+get(2,3,5);
+
+=> D. A warning + [,5...
+
+3/ 
+C : fatal error <= Only variables can be passed by reference
+
+4/ B ???
+$a = 2;
+$b = 3;
+function test() {
+    global $b;
+    static $a;
+    
+    $a++;
+    
+    $b+= $a;
+    
+    global $a;
+    $a += 2;
+}
+test();
+test();
+test();
+
+echo "$a, $b";

@@ -30,8 +30,12 @@ array_slice(array, $offset[, $length = NULL, $preserve_numeric_indices = flase])
 # looping !
 ATTENTION : array_map & array_walk fonctionnent trés différemment !
 bool array_walk($array, <USER DEFINED func>[, mixed $extra_arg])
+! USER DEFINED func($value, $key[, $extra_arg]) !
+=> ne modifie pas par défaut les valeurs de $array !!!
+   => pass by ref if the behavior is wanted ! (idem for $extra_arg !)
 
 array array_map(<any function>, $array)
+=> applies function on all values of $array
 
 # comparison of arrays
 array_with_elts_in_a_not_in_b array_diff($a, $b)

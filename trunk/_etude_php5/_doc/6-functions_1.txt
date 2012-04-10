@@ -1,0 +1,26 @@
+# accessing parameters
+func_*
+int       num_args()
+mixed     get_arg($nb)
+array     get_args()
+
+# variable functions !
+function xwz() { echo "hello from __FUNCTION__ !"; }
+$f = 'abc';
+$abc = 'xwz';
+$$f();
+
+# scopes
+global : can be declared inside function without having been declared in global scope previously...
+! no assignment poss on "globalization" !
+
+! static : only exists within scope of declaring function but retains value between repeated
+ calls to the function !
+(static $a; == static $a = 0 !!!)
+
+! variables with diff scopes are different vars even though they have the same names !!!
+== different namespaces...
+static $a;
+// do stuff on $a
+global $a;
+// deals with another $a !
