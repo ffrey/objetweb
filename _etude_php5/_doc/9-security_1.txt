@@ -1,0 +1,92 @@
+# basic rules : 
+## all input from outside is potentially evil
+
+=> filter/validate input / escape output
+
+## input : 
+get/post
+cookies
+http headers (can be forged !)
+
+# attacks
+## cross-site scripting : XSS
+injecting html/css/js into a page 
+<= - forms
+   - link (through email)
+   
+### ! js : most dangerous
+can redirect/modify the page/read out cookies...
+
+### coutermeasures
+#### escape output
+***read up***
+htmentities() > htmlspecialchars(<string>[, <quote handling type = ENT_COMPAT>,...])
+                                            ENT_COMPAT : only double-quotes are converted
+strip_tags(<string>[, string <allowable tags>])
+
+## Cross-Site Request Forgery : CSRF
+send http requests to steal valid user credentials !
+<= through : - iframes
+             - XMLHttpRequest
+             - via <script>, <object>, <embed>, <img>...
+: "Attacker employs user's browser to execute requests on 
+behalf of the attacker"
+
+### examples of attacks : 
+requests through img src attr : <img src="http://shop.xy/...
+                 hidden forms automatically submitted !
+
+### countermeasures : 
+#### unique token in forms
+unique token is created on each form creation
+and checked on every submit
+
+#### require re-login before sensitive ops !
+
+## SQL Injection
+### contermeasures
+- prepared statements (PDO)
+  the sql is compiled prior to the injection of input data
+  <= cannot be modified !
+- escape any input data from untrusted sources
+  e.g. : mysqli_real_escape_string()
+  
+! addslashes() is insufficient
+
+## Session Hijacking
+session ID is stolen !
+or
+using "fixed" session ID (e.g. : url that lets a user have authorized access)
+
+### countermeasures
+! ID regeneration prior to sensitive ops
+<= session_regenerate_id()
+
+- short session timeout
+
+- session.use_only_cookies : safer than url passing
+
+## Code Injection
+### <= through php includes
+! dangerous when including from untrusted source !
+e.g. : include $_GET['file'].'.php'; !!!
+
+#### countermeasures
+check source ! (whitelist)
+remove any path info through basename()
+! allow_url_fopen = Off (but restrict your use of file commands...)
+
+### access to command shell !
+e.g. : string system ( string $command [, int &$return_var ] )
+       exec(), passthru(), shell_exec(), ! backticks !, ...
+       
+### countermeasures
+prefer php functions over shell functions !
+
+if necessary : escape ! <= escapeshellargs()/escapeshellcmd()
+
+
+
+
+
+

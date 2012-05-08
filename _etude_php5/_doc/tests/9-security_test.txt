@@ -1,0 +1,39 @@
+73/ !
+E 
+
+74/ 
+A
+
+75/ !
+B (htmlspecialcharacters() => by default, leaves simple quotes alone !)
+
+76/ !
+B (Same-Origin Policy for js : scripts running on pages from the same site
+have access to each-other's props & methods...)
+   
+77/
+B
+
+78/
+D
+
+79/
+AD
+
+80/
+C
+
+81/ !
+B (DES : default UNIX crypting !)
+
+82/ !
+D (mail() filters linefeeds & return carriages out when setting a mail's subject)
+
+83/
+A
+
+84/ !
+A (Symmetric-key encryption : best for encrypting database credentials)
+
+85/
+C 

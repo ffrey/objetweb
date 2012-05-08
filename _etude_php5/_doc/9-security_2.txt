@@ -1,0 +1,15 @@
+## secure config : no display but logging on !
+display_errors = Off
+log_errors     = On
+error_reporting = E_ALL
+(error_reporting(E_ALL); ini_set('display_errors', 0); )
+
+#DataBase security
+least privileged users
+crypted passwords !
+
+# File Uploads security !
+$_FILES
+=> basename() to strip off path info !
+   sanity checks (do not rely on MIME type)
+   ! use *_uploaded_file() functions to handle uploaded files !

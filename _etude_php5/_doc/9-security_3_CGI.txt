@@ -1,0 +1,20 @@
+# PHP as a CGI Binary
+: php is not configured as a webserver's module
+  but as a command line binary !
+  
+user -> request to server -> request to php binary !
+
+## specific risks
+### accessing system files !
+BUT no arg can be passed to php binary !
+
+### user rights
+as a module : php runs as webserver user
+as cgi      : des directives specifiques servent à restreindre la 
+liberté de mouvement des users php sur le serveur (force_redirect, doc_root,...)
+
+### exposing code
+risks that code be exposed through the web without being interpreted !
+=> define doc_root + place php execs (as opposed to html templates ?)
+outside of doc_root !
+

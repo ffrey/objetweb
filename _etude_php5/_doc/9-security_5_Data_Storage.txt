@@ -1,0 +1,21 @@
+# DATA Storage
+PLR : Principle of Limited Rights
+
+no exposure to the outside of db's server !
+
+change standard passwords + encrypt
+
+! read the logs !
+
+...
+
+## crypting techniques
+### one-way (hashing)
+mhash
+md5
+
+### symetric encryption
+mcrypt_ecb()
+
+### asymetric
+
