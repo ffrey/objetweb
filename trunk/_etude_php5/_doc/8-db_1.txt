@@ -1,0 +1,58 @@
+#
+SQL : Structured Query Language
+
+# JOINS !
+## INNER
+"most conservative"
+=> all lines from joined tables that have an 
+explicit jointure
+
+## LEFT
+all table from ***left*** table even if no 
+matching line in right table !
+
+## RIGHT
+converse !
+
+# Transactions
+several transacs are grouped as one !
+<= ACID specification : 
+Atomic (self-contained)
+Consistent (database consistency is maintained whatever commands are applied)
+Isolated
+Durable
+
+# Prepared Statements
+similar to templates : compiled code with placeholders !
+
++ : - only parsed once (but executed x times with different params !)
+    - params are automatically secured 
+    
+! <= PDO class emulates the functionnality for db without the capability !
+
+# PDO (Php Data Objects extension)
+= DBAL : Database Abstraction Layer
+
+## PDO
+### normal querying : 
+PDO::prepare() : returns PDOStatement
+PDOStatement::execute()
+
+### in one call: 
+->query()
+- : no data binding available
+    ! returns a PDOStatement (that must be "emptied" prior to a 
+    new call to ->query() !)
+->exec() : returns nb of rows affected
+
+## PDOStatement
+! binding : only values (not entities like columns etc.) with only scalars (no arrays or nulls !)
+
+! ->bindColumn(<column name or pos>, $var_php)
+=> permet de mettre à jour $var_php avec la valeur de la colonne
+lors des appels à PDOStatement->fetch() !
+
+->setFetchMode : 
+
+## PDOException
+

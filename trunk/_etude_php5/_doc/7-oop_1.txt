@@ -1,14 +1,36 @@
-<?php
+# constructeur 
+si pas de constructeur, un constructeur est recherche dans classes parentes
 
-class A { 
-    protected $a = 1;
-    function a() { echo $this->a++; }
-}
+! si l'on veut appeler un constructeur parent : 
+function __construct() {
+    parent::__construct();
+    
+# destructor !
+unset/script end/ OU fin du scope d'existence (ex. : fin de la fonction qui a cree 
+l'objet)
 
-class B extends A {
-    protected $a = 10;
-    function b() { echo $this->a++; $this->a(); }
-}
+# visibility levels
+## properties
+=> NOTICE
 
-$b = new B();
-$b->b();
+# final : only methods/classes
+=> "PHP Fatal error:  Cannot override final method"
+(compared to "private visibility" :
+  => PHP Fatal error: "Call to private method myClass::showMember()" )
+  
+# const : not overridable !
+
+# abstract classes
+abstract methods are empty methods that must be declared in 
+dirived classes !
+
+! their visibility can only be changed wider wise !!!
+(ex : protected => public)
+
+# Magic methods
+__callStatic == __call($method, $args) for static methods
+__invoke() : ! when an instance is called as a function !
+
+serialize/unserialize => __sleep()/__wakeup()
+# cloning : clone()
+! objects are always passed by ref !!! (!= variables !)

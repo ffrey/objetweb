@@ -1,0 +1,11 @@
+# DATA Encryption
+
+SSL (Secure Socket Layer) : encrypts data
+
+SSH (Secure Shell Protocol) : encrypts network connection 
+
+Encryption of database data : 
+## one-way
+
+
+## 2 ways + symmetrical

@@ -1,0 +1,21 @@
+68/
+6
+
+69/ !
+4 lignes dans tab1 n'ont aucune contrepartie en tab2
+4                  ont une contrepartie 
+
+1 different de 6 lignes dans tab2 => 6
+...
+5              5                  => 5
+...
+4*6 + 4*5 => 44 !
+
+70/
+D
+
+71/
+A
+
+72/ !
+C (PDOStatement->bindColumn() )

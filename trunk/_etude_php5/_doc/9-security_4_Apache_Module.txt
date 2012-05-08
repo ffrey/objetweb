@@ -1,0 +1,6 @@
+# PHP as Apache Module
+- do not rely on default ('nobody') authorization for Apache user 
+ => create specific authorization rights
+ - create access model using .htaccess, LDAP,...
+ - do not grant root permission
+
