@@ -51,12 +51,23 @@ echo 'RENAME ? (O/N) ';
 $line = trim(fgets(STDIN));
 if ($db) { var_dump($line); }
 if ('O' == $line) {
+    $err = array();
     foreach ($aR AS $l) {
+            $msg = 'rename ' . $l['old'] . ' into ' . $l['new'] . "\n\r";
             if ($db) { 
-                echo 'rename ' . $l['old'] . ' into ' . $l['new'] . "\n\r"; 
+                echo $msg;
             } else {
-                rename($l['old'], $l['new']);
+                $ok = rename($l['old'], $l['new']);
+                if (!$ok) {
+                    $err[] = 'ECHEC : '. $msg;
+                }   
             }
+    }
+    if (count($err) ) {
+        echo 'ERREURS :'."\n\r";
+        foreach ($err AS $m) {
+            echo $m."\n\r";
+        }
     }
 } else {
     exit('Annulation par user');
