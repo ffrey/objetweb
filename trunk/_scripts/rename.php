@@ -2,8 +2,11 @@
 $db = false; // ! desactiver le renommage pour debug !
 $opts  = '';
 $opts .= 'p:';
+$opts .= 'f::';
 $args = getopt($opts);
 if (!@isset($args['p']) ) { exit('p manquant'); }
+$from = 0;
+if (@isset($args['f']) )  { $from = $args['f']; }
 $pref = trim($args['p']);
 if (empty($pref) ) { exit('prefix vide !'); }
 
@@ -31,7 +34,7 @@ if ($handle = opendir('.')) {
     }
     closedir($handle);
 }
-$i = 0;
+$i = $from;
 $aR = array();
 sort($list);
 foreach ($list AS $f) {
