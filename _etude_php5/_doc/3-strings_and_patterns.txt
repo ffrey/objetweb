@@ -8,7 +8,7 @@ strpos($haystack, $needle, $start_offset)
 substr_count($haystack, $needle);
 
 ## comparison
-int substrcmp($a, $b)
+int strcmp($a, $b)
 0 = equal
 ! >0 if $a is greater than $b
 
@@ -20,4 +20,4 @@ metaphone (EN !) / soundex
 
 ### count
 strlen
-str_word_count($str[, return_into_array ?])
+str_word_count($str[, return_type: int, array...])

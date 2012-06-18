@@ -30,4 +30,5 @@ json_encode($str, $options)
     ! This function only works with UTF-8 encoded data. !
     ! attention, le return peut être un tableau js (un objet pour js !-)
       SSI il s'agit d'un tableau séquentiel (commençant par 0)
+      SINON => objet littéral js
 json_last_error()

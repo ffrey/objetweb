@@ -1,0 +1,14 @@
+86/
+A
+
+87/
+BC
+
+88/ ! to disable upload thru php 
+C : file_uploads (php.ini)
+
+89/ ! 2 cookies with same name possible (if path is different !) !
+A: yes
+
+90/
+B

@@ -26,7 +26,8 @@ U  : PCRE_UNGREEDY
 match is returned with max nb of chars !
 
 ## non-greediness : 
-### non-greedy quatifier : adding ? or using U modifier
+! http://docstore.mik.ua/orelly/perl/cookbook/ch06_16.htm
+### non-greedy quantifier : adding ? or using U modifier
 *? +?
 
 
