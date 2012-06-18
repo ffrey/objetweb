@@ -1,15 +1,27 @@
 # namespaces
 
-## constantes
+## importing & aliasing : 'use [as]'
+1/ only 2 ways of importing : 
+### importing class
+use ow\lib\Text (= as Text) => new Text() possible
+### importing namespace
+use ow/lib (= as lib) => new lib/Text() possible
+                         echo lib/owPrint() possible
+                         echo lib/OWCONST possible
+                         
+2/ Unqualified names are solely GLOBAL
+
+## defining : 'namespace'
+### constantes
 ! vous pouvez utiliser le mot clé 'const' pour créer une constante dans un namespace !!!
 Avantage : vous n'avez pas à spécifier tout le namespace !
 
 Si vous utilisez define() sans spécifier le namespace, la constante est creee ds le scope global !
 
-## résolution des noms sans qualifications 
-### classes
+### résolution des noms sans qualifications 
+#### classes
 Une classe sans qualif est recherchee uniquement dans le namespace courant.
 
-### fonctions et constantes
+#### fonctions et constantes
 Fonctions et constantes sans qualif sont recherchees dans le namespace courant d'abord, puis
  dans l'espace global.

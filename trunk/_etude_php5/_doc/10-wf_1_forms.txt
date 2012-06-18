@@ -1,0 +1,15 @@
+# forms
+
+## naming of inputs
+dots/spaces => '_' !
+
+name="name[]" => array !
+
+## superglobals
+$_REQUEST = array_merge(<tableaux super globaux def dans request_order>);
+
+## security
+XSS != escape user submitted values : 
+- htmlspecialchars() to prevent code being interpreted on display
+
+- urls should be used with urlencode()

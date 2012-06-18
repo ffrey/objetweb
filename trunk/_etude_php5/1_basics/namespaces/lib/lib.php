@@ -8,5 +8,7 @@ class Text
 		return 'argument is ' . $arg;
 	}
 }
-function owPrint() { return 'this is from owPrint function...'; }
+function owPrint($var = null) { 
+    return sprintf('this is from owPrint function within %s : %s', __NAMESPACE__, $var); 
+}
 const OWCONST = 'hello';

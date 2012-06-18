@@ -1,7 +1,12 @@
-<h3>Sans definition de namespace : prefixer les appels par le namespace !</h3>
 <?php
-require 'namespaces/lib.php';
-//phpinfo();
+namespace ow\lib;
+require 'lib/lib.php';
+require 'lib/global.php';
 
-$a = new ow\lib\Text();
+$a = new Text();
 print $a->show('go');
+
+$b = new Iam();
+echo $b;
+
+echo echoGlob('John');

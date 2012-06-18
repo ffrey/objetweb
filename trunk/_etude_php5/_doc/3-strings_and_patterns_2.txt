@@ -12,3 +12,6 @@ f : float (F : local unaware !!!)
 spec de type
 %[signe][remplisseur][specificateur d'alignement][spec de taille][spec de precision dec][spec de type]
 
+Exemples : 
+printf('%\'*10s', 'apple');    => *****apple
+printf('%\'*10.3f', 3.089808); => *****3.090

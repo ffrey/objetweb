@@ -1,0 +1,37 @@
+# sessions : way of preserving data across requests to a web 
+server
+SID (session identifier) : <session_name>=<ID> if url-transferred
+                         or
+                           empty if cookie transferred !
+                           
+
+Session ID : unique identifier created at the beginning of each 
+invidual session on the server
+
+## 2 techniques of passing thru the SID
+### cookie
+better for protection => session.use_only_cookies
+
+### Url parameter
+SID is appended to all ***relative*** links ! (except if use_only_cookies=1 !)
+
+forced by session.use_trans_sid
+
+## creation
+either s.session_auto_start=1 or session_start()
+
+## access
+$_SESSION
+
+## commands
+<present time> = session_cache_expire(<new time in minutest>)
+...
+
+
+## configuration 
+session.gc_maxlifetime (default : 1440 seconds = 24 minutes) = time of idleness (age of session file) until the gc deletes the file 
+and thus stops the session ! (attention, sous windows, il y svt une cron qui fait se travail à partir de la valeur du php.ini
+=> pour être sûr que ce n'est pas le cas : modifier la valeur + modifier le chemin de sauvegarde !)
+
+! MAIS une session est liée aussi à la durée de vie du cookie sur le poste client !
+<= session.cookie_lifetime (default : 0 => jusqu'à fermeture du navigateur)
