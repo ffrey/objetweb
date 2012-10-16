@@ -225,9 +225,9 @@ class ptLogTest extends PHPUnit_Framework_TestCase
 		self::$files_to_delete[] = $file;
 		$this->_mustBeIn($msg1, $file);
 
-		$f = ptLog::setPrefix();
+		$f = ptLog::unsetPrefix();
 		$this->assertEquals($f, $logFile,
-		'setPrefix(empty) reverts to default file');
+		'unsetPrefix() reverts to default file');
 
 		$msg2 = 'aprés suppr du préfixe';
 		ptLog::log($msg2);
@@ -241,6 +241,17 @@ class ptLogTest extends PHPUnit_Framework_TestCase
 		'setPrefix creates a new file : ' . $newFile);
 		$this->_mustBeIn($msg1, $newFile);
 		self::$files_to_delete[] = $newFile;
+	}
+
+	public function testLogAndChangePrefix()
+	{
+		$logFile = self::$d['logFile'];
+		$msg1 = 'new prefix';
+		ptLogW::init(self::$default_config);
+		$file = ptLogW::setPrefix('PREFIX');
+		ptLog::logAll($msg1, 'PREFIX');
+		$this->assertTrue(file_exists($file),
+		'setPrefix creates a new file : ' . $file);
 	}
 
 	public function _mustBeIn($str, $file, $must = true)
