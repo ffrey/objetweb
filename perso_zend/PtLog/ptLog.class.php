@@ -23,7 +23,7 @@
  * //... lors de l'initialisation + préfixé par $prefix
  * ptLog::setPrefix($prefix);
  * // retourne au fichier log sans $prefix
- * ptLog::setPrefix();
+ * ptLog::unsetPrefix();
  *  * // stoppe tout logging
  * ptLog::clickOff();
  * // ré-active le logging
@@ -175,6 +175,11 @@ class ptLog
 				var_dump($origin, 'NO STREAM !', $d, $prefix);
 		}
 		return NULL;
+	}
+	
+	static public function unsetPrefix()
+	{
+		self::$prefix = NULL;
 	}
 	
 	/**
