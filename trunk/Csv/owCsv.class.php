@@ -4,7 +4,10 @@
  */
 class owCsv
 {
-	static protected $erreurs = array();
+	static protected 
+		$erreurs = array(),
+		$encoding = 'ISO-8859-1'
+	;
 	/**
 	 *
 	 * @param array $data
@@ -22,6 +25,9 @@ class owCsv
 		}
 		$i = 0; 
 		$expectedCount = count($lines[0]);
+		if ('UTF-8' == self::$encoding) {
+			fwrite($fichier, "\xEF\xBB\xBF");
+		}
 		foreach ($lines AS $l) {
 			$new_line = implode($options['separator'], $l);
 			// 
