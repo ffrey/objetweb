@@ -7,7 +7,7 @@
  * * * function stripSpaces()
  * @throws Exception
  */
-class myString
+class owString
 {
   /**
  * make a filename secure for all platforms + web
@@ -60,6 +60,17 @@ class myString
   return $str;
   }
   
+  	public static function implodeNotEmpty($glue = ' ', array $d)
+	{
+		$ret = ''; $g = '';
+		foreach ($d AS $k => $v) {
+			if (is_null($v) OR empty($v) ) { continue; }
+			$ret .= $g.$v;
+			$g = $glue;
+		}
+		return $ret;
+	}
+	
   ### chiffres en lettres ! ###
 
 	public function convertir($Montant)
