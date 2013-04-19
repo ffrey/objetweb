@@ -87,4 +87,16 @@ class owStringTest extends PHPUnit_Framework_TestCase
 	}
   
   }
+  
+  function testStripAccents()
+  {
+	$t = array(
+		"l'orienté à gauche ne s'entend pas avec Noël" => "l'oriente a gauche ne s'entend pas avec Noel"
+	);
+	foreach ($t AS $t => $expect)
+	{
+		$got = owString::stripAccents($t);
+		$this->assertEquals($expect, $got);
+	}
+  }
 }

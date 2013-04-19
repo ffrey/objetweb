@@ -62,6 +62,7 @@ function r()
 			$ret = $alt;
 			break;
 		} else {
+			$var = is_bool($var)?'':$var; // ne pas afficher 1 si $var = true !
 			$ret = $before . $var . $after;
 		}
 	} while (false);
