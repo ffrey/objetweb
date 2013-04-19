@@ -1,7 +1,10 @@
 <?php
 /**
  * static methods to act as helper functions for routine string processing
- *
+ * 
+ * @package    b2c
+ * @subpackage utils
+ * @author FFreyssenge
  * @version 1.1  / 2009 03 17
  * * added : 
  * * * function stripSpaces()
@@ -21,7 +24,7 @@ class owString
   {
     if (empty($str)) { throw new Exception(__FUNCTION__ . ' : arg vide !'); }
     // enlever les accents
-    $tmp = self::strToUtf8($str);
+    $tmp = self::stripAccents($str);
     // remplacer les caracteres autres que lettres, chiffres et point par _
     $secureFormat= strtolower(preg_replace('/([^.a-z0-9]+)/i', '_', $tmp));
     if (empty($secureFormat)) { throw new Exception(__FUNCTION__ . ' : arg vide ! [' . $secureFormat . ']'); }
@@ -34,17 +37,48 @@ class owString
 
     return $secureFormat;
   }
+  
+  public static function stripAccents($str)
+  {
+  	$from = 'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ%';
+  	$to	  = 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy_';
+  	if (mb_detect_encoding($str, 'UTF-8', true) ) {
+  		$ret = self::strtr_utf8($str, $from, $to);
+  	} else {
+  		$ret = strtr($str, $from, $to);
+  	}
+  	return $ret;
+  }
+  
   public static function strToUtf8($str)
   {
       return strtr($str,
-      '����������������������������������������������������%', 
+      'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ%', 
       'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy_'
       );
 
   }
+  
+  /**
+   * strtr pour les strings encodees en utf-8
+   * @author http://stackoverflow.com/questions/1454401/how-do-i-do-a-strtr-on-utf-8-in-php
+   * @param string $str
+   * @param string $from
+   * @param string $to
+   * @return string
+   */
+  public static function strtr_utf8($str, $from, $to) {
+  	$keys = array();
+  	$values = array();
+  	preg_match_all('/./u', $from, $keys);
+  	preg_match_all('/./u', $to, $values);
+  	$mapping = array_combine($keys[0], $values[0]);
+  	return strtr($str, $mapping);
+  }
+  
   public static function slugify($str, $maxLength = 0)
   {
-  	$str = html_entity_decode(trim($str), ENT_QUOTES, 'ISO-8859-1');
+  	$str = html_entity_decode(trim($str), ENT_QUOTES);
   	$str = strtr($str, '.', '_'); // strip . !
   	return self::strtoSecureFileNameFormat($str, $maxLength);
   }
@@ -207,7 +241,7 @@ class owString
 	// fonction de convertion d'un chiffre � 3 digits en lettre
 	protected function cenvtir($Valeur)
 	{
-		$db = true; $origin = __CLASS__.'::'.__FUNCTION__;
+		$db = false; $origin = __CLASS__.'::'.__FUNCTION__;
 		if ($db) {
 			var_dump($origin, $Valeur);
 		}
