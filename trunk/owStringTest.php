@@ -99,4 +99,40 @@ class owStringTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($expect, $got);
 	}
   }
+  
+  /**
+   * 2013 11 14 : ! bizarre, les tags html
+   */
+  function testTruncate()
+  {
+	$aTest = array('test' => array(), 'expect' => array() );
+	// 176 caracteres
+	$sSample= <<<HERE
+Salut Marc, où as-tu été ces derniers temps ?<img src="/img/hello_marc.jpg" /> Nous sommes heureux 
+de te revoir ! <a href="/invits/inviter_marc.html">viens nous voir !</a>
+HERE;
+	// 119 caracteres + 
+	/** 
+	 * attention, le truncate supprime les espaces en fin de texte !!!
+	 */
+	$aExpect[1] = <<<HERE
+Salut Marc, où as-tu été ces derniers temps ?<img src="/img/hello_marc.jpg" /> Nous sommes heureux 
+de te revoir !...
+HERE;
+	$aParams[1] = array('length' => 124, 'considerHtml' => false);
+	
+	$aExpect[2] = <<<HERE
+Salut Marc, où as-tu été ces derniers temps ?<img src="/img/hello_marc.jpg" /> Nous sommes heureux 
+de te revoir ! <a href="/invits/inviter_marc.html">viens nous voir !</a>
+HERE;
+	$aParams[2] = array('length' => 160, 'comment' => 'un tag, contenu texte compris, n\'est jamais coupe avec considerHtml a true !');
+
+	$aDefaults = array('length' => 100, 'ending' => '...', 'exact' => false, 'considerHtml' => true, 'comment' => '');
+	foreach ($aParams AS $i => $aTest) {
+		$a = array_merge($aDefaults, $aTest);
+		var_dump($a);
+		$got = owString::truncate($sSample, $a['length'], $a['ending'], $a['exact'], $a['considerHtml']);
+		$this->assertEquals($aExpect[$i], $got, $a['comment']);
+	}
+  }
 }
