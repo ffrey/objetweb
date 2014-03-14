@@ -48,4 +48,20 @@ class owNumber
 		return $ret;
 		*/
 	}
+	
+	public static function getNoteArrondieALaDemiUnitePres($fNb)
+	{
+		$fNote = $fNb;
+		$iNote = (int) $fNb;
+		$iDec = $fNote - $iNote;
+		if (0.25 > $iDec) {
+			$iArr = 0;
+		} else if ($iDec <= 0.75) {
+			$iArr = 0.5;
+		} else {
+			$iArr = 1;
+		}
+		return ($iNote + $iArr);
+	}
+	
 }

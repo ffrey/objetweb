@@ -38,5 +38,30 @@ class owNumberTest extends PHPUnit_Framework_TestCase
   	}
   }
   
+    public function testGetNoteArrondieALaDemiUnitePres()
+  {
+  /*
+  var_dump(
+  is_int( 9223372036854775807 ),
+  is_float( 9223372036854775807 )
+  );
+  */
+  	$tests = array(
+	
+		array(23, 23),
+		array("24", 24),
+		array(23.4, 23.5),
+		array('23.5', 23.5),
+		array(23.36, 23.5),
+		array(10.1, 10),
+		array(4.8, 5),
+	);
+  	foreach ($tests AS $t) {
+  		// var_dump($t);
+  		$got = owNumber::getNoteArrondieALaDemiUnitePres($t[0]);
+  		$this->assertEquals($t[1], $got, 'testing ' . $t[0]);
+  	}
+  }
+  
   
 }
