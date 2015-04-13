@@ -1,5 +1,5 @@
 <?php
-// phpunit C:\wamp\lib\ow\owUrlTest.php
+// phpunit D:\Users\ffreysse\Documents\PROJETS_WEB\lib\objetweb\owUrlTest.php
 require_once 'owUrl.php';
 
 class owUrlTest extends PHPUnit_Framework_TestCase
@@ -7,7 +7,7 @@ class owUrlTest extends PHPUnit_Framework_TestCase
   public function testAddQuery()
   {
 	$aTests = array(
-		array('url' => '/hello/', 'query' => 'yes=no',
+		/****/array('url' => '/hello/', 'query' => 'yes=no',
 			'expect' => '/hello/?yes=no',
 		),
 		array('url' => 'http://name.com/bonjour/', 'query' => 'yes=no',
@@ -19,6 +19,9 @@ class owUrlTest extends PHPUnit_Framework_TestCase
 		),
 		array('url' => 'http://name.com/bonjour/?hello=bonjour', 'query' => 'yes=no',
 			'expect' => 'http://name.com/bonjour/?hello=bonjour&yes=no',
+		),
+		array('url' => 'http://name.com/bonjour/?hello=bonjour', 'query' => 'yes=no&hello=aurevoir',
+			'expect' => 'http://name.com/bonjour/?hello=aurevoir&yes=no',
 		),
 		array('url' => 'http://name.com/bonjour/#', 'query' => 'yes=no',
 			'expect' => 'http://name.com/bonjour/?yes=no#',
@@ -36,6 +39,7 @@ class owUrlTest extends PHPUnit_Framework_TestCase
 		array('url' => 'http://name.com/bonjour/#quoi&', 'query' => array('yes' => 'no', 'lkjk' => 'lkjkl'),
 			'expect' => 'http://name.com/bonjour/?yes=no&lkjk=lkjkl#quoi', 'comment' => 'corrige les & terminaux',
 		),
+		/****/
 		/*'*/
 	);
 	foreach ($aTests AS $a) {
