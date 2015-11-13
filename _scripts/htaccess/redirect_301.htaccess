@@ -1,0 +1,3 @@
+# http://www.annuaire-info.com/redirection-301/
+# RedirectPermanent / http://www.ex.fr/
+RedirectPermanent /essai.php /redirect.php

@@ -1,0 +1,29 @@
+SetEnv PHP_VER 5
+
+Options +FollowSymLinks +ExecCGI
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # http://www.annuaire-info.com/redirection-301/acces-au-site-sans-www-et-avec-www/
+  RewriteCond %{HTTP_HOST} ^www.asso95.fr$
+  RewriteRule ^(.*) http://asso95.fr/$1 [QSA,L,R=301]
+
+  # uncomment the following line, if you are having trouble
+  # getting no_script_name to work
+  # RewriteBase /
+
+  # we skip all files with .something
+  #RewriteCond %{REQUEST_URI} \..+$
+  #RewriteCond %{REQUEST_URI} !\.html$
+  # RewriteCond %{REQUEST_URI} !\.js$
+  #  RewriteRule .* - [L]
+
+  # we check if the .html version is here (caching)
+  RewriteRule ^$ index.html [QSA]
+  RewriteRule ^([^.]+)$ $1.html [QSA]
+  RewriteCond %{REQUEST_FILENAME} !-f
+
+  # no, so we redirect to our front web controller
+  RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>

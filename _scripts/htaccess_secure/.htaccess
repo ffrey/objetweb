@@ -1,0 +1,4 @@
+AuthName "Restricted Area" 
+AuthType Basic 
+AuthUserFile /home/objetweb/public_html/include/.htpasswd 
+require valid-user

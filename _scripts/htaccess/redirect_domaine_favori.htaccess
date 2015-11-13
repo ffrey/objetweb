@@ -1,0 +1,5 @@
+# http://www.annuaire-info.com/redirection-301/acces-au-site-sans-www-et-avec-www/
+Options +FollowSymlinks
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www.ex.fr/$
+RewriteRule ^(.*) http://ex.fr/$1 [QSA,L,R=301]
