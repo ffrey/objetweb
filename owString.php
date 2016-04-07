@@ -12,21 +12,23 @@
  */
 class owString
 {
+    private static $listOfAccents = 'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ%';
+    private static $listOfReplacements = 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy_';
   /**
  * make a filename secure for all platforms + web
  * : no space, no non-utf8 char
- * => can be used to create slugs (@see self::slugity() )
+ * => can be used to create slugs (@see self::slugify() )
  *
  * @param string $str
  * @return string
  */
-  public static function strtoSecureFileNameFormat($str, $maxLength = 0)
+  public static function strtoSecureFileNameFormat($str, $maxLength = 0, $joker = '_')
   {
     if (empty($str)) { throw new Exception(__FUNCTION__ . ' : arg vide !'); }
     // enlever les accents
     $tmp = self::stripAccents($str);
-    // remplacer les caracteres autres que lettres, chiffres et point par _
-    $secureFormat= strtolower(preg_replace('/([^.a-z0-9]+)/i', '_', $tmp));
+    // remplacer les caracteres autres que lettres, chiffres et point par $joker
+    $secureFormat= strtolower(preg_replace('/([^.a-z0-9]+)/i', $joker, $tmp));
     if (empty($secureFormat)) { throw new Exception(__FUNCTION__ . ' : arg vide ! [' . $secureFormat . ']'); }
 
     if (0 < $maxLength AND $maxLength < strlen($secureFormat)) {
@@ -40,8 +42,8 @@ class owString
   
   public static function stripAccents($str)
   {
-  	$from = 'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ%';
-  	$to	  = 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy_';
+  	$from = self::$listOfAccents;
+  	$to	  = self::$listOfReplacements;
   	if (mb_detect_encoding($str, 'UTF-8', true) ) {
   		$ret = self::strtr_utf8($str, $from, $to);
   	} else {
@@ -49,12 +51,28 @@ class owString
   	}
   	return $ret;
   }
+
+  public static function hasAccents($str)
+  {
+  	$db 	= false;
+  	$origin = __CLASS__ . '::' . __FUNCTION__;
+
+
+  	$str = mb_convert_case($str, MB_CASE_LOWER, 'UTF-8');
+  	$tmp = self::stripAccents($str);
+
+  	if($db) {
+  		var_dump($origin, __LINE__, $str, $tmp, $tmp != $str);
+  	}
+  	
+  	return $str != $tmp;
+  }
   
   public static function strToUtf8($str)
   {
       return strtr($str,
-      'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ%', 
-      'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy_'
+      self::$listOfAccents, 
+      self::$listOfReplacements
       );
 
   }
@@ -76,11 +94,12 @@ class owString
   	return strtr($str, $mapping);
   }
   
-  public static function slugify($str, $maxLength = 0)
+  public static function slugify($str, $maxLength = 0, $joker = '_')
   {
+  	$str = trim($str);
   	$str = html_entity_decode(trim($str), ENT_QUOTES);
   	$str = strtr($str, '.', '_'); // strip . !
-  	return self::strtoSecureFileNameFormat($str, $maxLength);
+  	return self::strtoSecureFileNameFormat($str, $maxLength, $joker);
   }
   
   /**
@@ -327,7 +346,7 @@ class owString
 	return $ret;
   }
   
-   /**
+  /**
    * @author http://dodona.wordpress.com/2009/04/05/how-do-i-truncate-an-html-string-without-breaking-the-html-code/
    * (code issu du fw CakePhp)
    *
@@ -428,5 +447,10 @@ class owString
   	}
   	return $truncate;
   } // /truncate()
+
+
+  public static function getAccents() {
+    return self::$listOfAccents;
+  }
   
 }

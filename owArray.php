@@ -197,4 +197,68 @@ class owArray
         }
         return $resultArray;
     }
+
+	/**
+	 * renvoie vide ou $default_val si $var_name_exists n'existe pas dans $tab / la valeur sinon
+	 * @param $var_name_exists
+	 * @param $tab
+	 * @param $default_val
+	 * @uses owArray::array_flatten_sep() to enable searching for multidimensional keys (ex : [don][transac_date][to])
+	 *       => searches for don_transac_date_to inside of flattened array
+	 */
+	static public function g_if ($var_name_exists, $tab = null, $default_val = null )
+	{
+		$db = false; $origin = __FILE__.'::'.__FUNCTION__;
+		$ret = '';
+
+		list($tab, $var_name_exists) = self::_flatten_if_needed($tab, $var_name_exists);
+		if (is_null($tab) OR !is_array($tab) ) {
+			return $ret;
+		}
+		if ($db) {
+			var_dump($origin
+			, 'existe ' . $var_name_exists . ' ? '
+			);
+		}
+		$vals = $GLOBALS;
+		if (count($tab) ) {
+			$vals = $tab;
+		}
+		if (array_key_exists($var_name_exists, $vals) ) {
+			if ($db) {
+				echo ' YES : ' . print_r($vals, true);
+			}
+			$ret = $vals[$var_name_exists];
+		} else {
+			if ($db) {
+				echo ' NO :  ';
+				// echo print_r($vals, true);
+			}
+		}
+
+		if (empty($ret) AND !is_null($default_val) ) {
+			$ret = $default_val;
+		}
+		return $ret;
+	}
+	
+	static public function _flatten_if_needed($tab, $var_name_exists)
+	{
+		$db = false;
+		do {
+			if (preg_match('#^\[.*\]$#', $var_name_exists) ) { // if [ & ] exists
+				$sep = '_';
+				$key = strtr($var_name_exists, array('][' => $sep) ); //   transform into _ : strip 1st & last > '][' into '_'
+				$key = substr($key, 1, strlen($key)-2);
+				if ($db) {
+					echo 'new key : ' . $key;
+				}
+				$var_name_exists = $key;
+				$tab             = self::flatten_sep($sep, $tab); //   flatten the array
+			}
+		} while (false);
+
+		return array($tab, $var_name_exists);
+	}
+	
 }

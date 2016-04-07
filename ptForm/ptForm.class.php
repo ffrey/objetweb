@@ -431,6 +431,68 @@ class ptForm {
     	return $ret;
     }
     
+	protected function isMaxLength($args) {
+    	$db = false;
+    	$origin = __CLASS__ . '::' . __FUNCTION__;
+    	$value 	= $args['value'];
+    	$iMax 	= $args['max'];
+    	$iLength = strlen($value);
+		$ret = ($iLength < $iMax);
+    	if ($db) {
+    		var_dump($origin
+			, 'args', $args
+			, 'value', $value
+			, 'max', $iMax
+			, 'return' , $ret
+			);
+    		exit;
+    	}
+    	return $ret;
+    }
+	
+		protected function isMinLength($args) {
+    	$db = false;
+    	$origin = __CLASS__ . '::' . __FUNCTION__;
+    	$value 	= $args['value'];
+    	$iMax 	= $args['min'];
+    	$iLength = strlen($value);
+		$ret = ($iLength > $iMax);
+    	if ($db) {
+    		var_dump($origin
+			, 'args', $args
+			, 'value', $value
+			, 'min', $iMax
+			, 'return' , $ret
+			);
+    		exit;
+    	}
+    	return $ret;
+    }
+	
+	public function checkMaxLength($chp, $msg, $max)
+    {
+    	$db = false;
+    	$origin = __CLASS__ . '::' . __FUNCTION__;
+    	$rule = 'maxlength';
+    	$this->rules[$chp][$rule] = array('max' => $max);
+    	$this->errors_msg[$chp][$rule] = (null !== $msg) ? $msg : $this->getDefaultErrorMsg($rule);
+    	if ($db) {
+    		var_dump($this->errors_msg, $msg, $this->getDefaultErrorMsg($rule));
+    	}
+    }
+	
+	public function checkMinLength($chp, $msg, $min)
+    {
+    	$db = false;
+    	$origin = __CLASS__ . '::' . __FUNCTION__;
+    	$rule = 'minlength';
+    	$this->rules[$chp][$rule] = array('min' => $min);
+    	$this->errors_msg[$chp][$rule] = (null !== $msg) ? $msg : $this->getDefaultErrorMsg($rule);
+    	if ($db) {
+    		var_dump($this->errors_msg, $msg, $this->getDefaultErrorMsg($rule));
+    	}
+    }
+	
     /**
      * this function allows to not define check<Rule>()
      * => you only have to implement is<Rule>($field_name, $error_msg = null)

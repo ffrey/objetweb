@@ -1,5 +1,5 @@
 <?php
-// phpunit C:\wamp\lib\ow\owStringTest.php
+// phpunit-4.8.phar owStringTest.php
 
 //require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 require_once 'owString.php';
@@ -135,4 +135,22 @@ HERE;
 		$this->assertEquals($aExpect[$i], $got, $a['comment']);
 	}
   }
+  
+  public function testHasAccents() {
+		$tests = array(
+			'http://www.idgarages.com/garage-fresne-lès-reims/' => true,
+			'http://www.idgarages.com/garage-fresne-lEs-reims/' => false,
+			'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ' => true,
+		);
+		$i = 0;
+		foreach($tests as $test => $expected) {
+			$i++;
+			$got = owString::hasAccents($test);
+			
+			print_r($got);
+
+			$this->assertTrue($expected == $got, "$i -----> something went wrong!!!!!");
+		}
+		
+	}
 }

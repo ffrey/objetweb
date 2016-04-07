@@ -1,5 +1,5 @@
 <?php
-// phpunit C:\wamp\lib\ow\ptForm\ptFormTest.php
+// php ./phpunit-4.8.phar ./ptForm/ptFormTest.php
 require_once 'ptForm.class.php';
 require_once dirname(__FILE__).'/../helper/owConsoleHelper.php';
 error_reporting(E_ALL); ini_set('display_errors', true);
@@ -190,6 +190,62 @@ class ptFormTest extends PHPUnit_Framework_TestCase
 		$this->assertFalse($got);
 	}
 
+	public function testMaxLength()
+	{
+		step(__FUNCTION__);
+		$db = false;
+		$aTests = array(
+			array('chpOk' => 'kjk'), array('chpTooLong' => 'ouiouiouioui oiu') );
+		$aExpected = array(
+			true,
+			false,
+		);
+		$msg = 'Le chp ne doit pas dépasser %s caractères';
+		$i = 0;
+		foreach ($aTests AS $i => $aTest) {
+			$expected 	= $aExpected[$i];
+			foreach ($aTest AS $field => $value) {
+				$this->form->checkMaxLength($field, $msg, 5);
+				$this->form->bind($aTest);
+				$got = $this->form->isValid();
+				$this->assertEquals($got, $expected, 
+					sprintf('Value tested : %s / expected : %s => got %s', $value, $expected?'true':'false', $got?'true':'false')
+				);
+				if (false == $got) {
+					$this->assertTrue(array_key_exists($field, $this->form->getErrors() ) );
+				}
+			}
+		}
+	}
+	
+	public function testMinLength()
+	{
+		step(__FUNCTION__);
+		$db = false;
+		$aTests = array(
+			array('chpOk' => 'kjk'), array('chpTooLong' => 'ouiouiouioui oiu') );
+		$aExpected = array(
+			false,
+			true,
+		);
+		$msg = 'Le chp ne doit pas dépasser %s caractères';
+		$i = 0;
+		foreach ($aTests AS $i => $aTest) {
+			$expected 	= $aExpected[$i];
+			foreach ($aTest AS $field => $value) {
+				$this->form->checkMinLength($field, $msg, 5);
+				$this->form->bind($aTest);
+				$got = $this->form->isValid();
+				$this->assertEquals($got, $expected, 
+					sprintf('Value tested : %s / expected : %s => got %s', $value, $expected?'true':'false', $got?'true':'false')
+				);
+				if (false == $got) {
+					$this->assertTrue(array_key_exists($field, $this->form->getErrors() ) );
+				}
+			}
+		}
+	}
+	
 	public function testSeveralRules()
 	{
 		$db = false;

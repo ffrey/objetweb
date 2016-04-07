@@ -1,5 +1,5 @@
 <?php
-// phpunit C:\wamp\lib\ow\owArrayTest.php
+// php phpunit-4.8.phar owArrayTest.php
 
 //require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 require_once 'owArray.php';
@@ -46,6 +46,10 @@ class owArrayTest extends PHPUnit_Framework_TestCase
 	
 	public function testFlatten_sep()
 	{
+		$this->markTestIncomplete(
+          'flatten_sep disappeared ? => see util::flatten() for implementation'
+        );
+	
 		$expect_date = '10/11/2010';
 		$mail = 'noreply@domain.com';
 		$a = array('one', 'two');
@@ -75,6 +79,10 @@ class owArrayTest extends PHPUnit_Framework_TestCase
 	
 	public function test_Split_into()
 	{
+	$this->markTestIncomplete(
+          '_split_into disappeared ? => see util::flatten() for implementation'
+        );
+	
 		$test = $this->data['array'];
 		$got  = owArray::_split_into($test, 2);
 		// var_dump($got);
@@ -111,6 +119,9 @@ class owArrayTest extends PHPUnit_Framework_TestCase
 	
 	public function testArray_merge_with_numeric_keys()
 	{
+	$this->markTestIncomplete(
+          'array_merge_with_numeric_keys disappeared ? => see util::flatten() for implementation'
+        );
 		$trois = array('one', 2);
 		$test = array(
 			'simple' => 'key',
